@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+
+{% block title %}研究業績{% endblock %}
+
+{% block content %}
+    <!-- 言語切り替え -->
+    <div class="lang-toggle">
+        <a href="{{ url_for('publications', lang='ja') }}">🇯🇵 日本語</a> | 
+        <a href="{{ url_for('publications', lang='en') }}">🇬🇧 English</a>
+    </div>
+        
+    <br>
+
+    <section class="main_left">
+        <h1>{% if lang == 'ja' %}■査読付き論文{% else %}■Peer-reviewed papers{% endif %}</h1>
+    </section>
+
+    <section class="main_black">
+        <h1>{% if lang == 'ja' %}ハロゲン化物単結晶の合成{% else %}・Synthesis of Halide Single Crystals{% endif %} </h1>
+    </section>
+
+
+    <section class="main_left">
+        <h1>{% if lang == 'ja' %}■競争的資金{% else %}■Grants{% endif %}</h1>
+    </section>
+
+    <section class="main_black">
+        <h1>2025/4~2028/3<br>(代表) 日本学術振興会 特別研究員奨励費 特別研究員(DC1)</h1>
+    </section>
+
+    <section class="main_black">
+        <h1>2024/4~2025/3<br>(代表) 2024年度 ヨウ素学会研究助成 自己発光ヨウ化物の組成制御による高輝度赤色-近赤外発光中性子シンチレータ開発</h1>
+    </section>
+
+    <section class="main_black">
+        <h1>2024/4~2025/3<br>(代表) 2024年度 第一稀元素化学工業株式会社 研究助成</h1>
+    </section>
+
+    <section class="main_black">
+        <h1>2024/4~2025/3<br>(代表) 2024年度 東北大学金属材料研究所 共同研究拠点課題 若手萌芽研究</h1>
+    </section>
+
+    <br>
+
+    <section class="main_left">
+        <h1>{% if lang == 'ja' %}■受賞{% else %}■Awards{% endif %}</h1>
+    </section>
+
+    <section class="main_black">
+        <h1>2022/9<br>日本セラミックス協会第35回秋季シンポジウム特定セッション クリスタルサイエンス-結晶育成技術の新展開と材料研究- 優秀発表賞, 
+            新規Li2Hf(Br,I)6中性子シンチレータの結晶構造と発光特性, 公益社団法人日本セラミックス協会,
+            藤原千隼・東北大学</h1>
+    </section>
+
+    <section class="main_black">
+        <h1>2022/8<br>次世代放射線シンポジウム優秀発表賞, 原発廃炉に向けたリモート・リアルタイム中性子・ガンマ線両モニタ用の赤色発光Li2Hf(I,Br)6シンチレータの特性, 
+            公益社団法人 応用物理学会 放射線分科会,
+            藤原千隼・東北大学</h1>
+    </section>
+
+
+    <section class="main_left">
+        <h1>{% if lang == 'ja' %}■国際学会発表{% else %}■International Conferences{% endif %}</h1>
+    </section>
+
+    <section class="main_black">
+        <h1>2022/8<br>次世代放射線シンポジウム優秀発表賞, 原発廃炉に向けたリモート・リアルタイム中性子・ガンマ線両モニタ用の赤色発光Li2Hf(I,Br)6シンチレータの特性, 
+            公益社団法人 応用物理学会 放射線分科会,
+            藤原千隼・東北大学</h1>
+    </section>
+
+    <br>
+    
+    <a href="{{ url_for('research', lang=lang) }}" class="cta-button">{% if lang == 'ja' %}研究内容を見る{% else %}Explore Research Projects{% endif %}</a>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            let slides = document.getElementsByClassName("slide");
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex - 1].style.display = "block";
+        }
+
+        setInterval(() => plusSlides(1), 5000);
+    </script>
+{% endblock %}
