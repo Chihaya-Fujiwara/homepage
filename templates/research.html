@@ -1,0 +1,157 @@
+{% extends "layout.html" %}
+
+{% block title %}研究内容{% endblock %}
+
+{% block content %}
+    <!-- 言語切り替え -->
+    <div class="lang-toggle">
+        <a href="{{ url_for('research', lang='ja') }}">🇯🇵 日本語</a> | 
+        <a href="{{ url_for('research', lang='en') }}">🇬🇧 English</a>
+    </div>
+        
+    <br>
+
+    <section class="main_left">
+        <h1>{% if lang == 'ja' %}■研究キーワード{% else %}■Key words{% endif %}</h1>
+    </section>
+
+    <section class="main_left">
+        <h1>{% if lang == 'ja' %}無機材料, ハロゲン化物結晶, シンチレータ, Linux, python, 第一原理計算, Quantum espresso, VASP, 放射線,  中性子検出{% else %}Inorganic materials, Halide crystals, Scintillators, , Linux, python, First-principles calculations, Quantum espresso, VASP,Radiation, Neutron detection{% endif %}</h1>
+    </section>
+
+    <br>
+
+    <section class="main_left">
+        <h1>{% if lang == 'ja' %}研究内容、第一原理計算、開発したアプリケーションに興味がありましたら、ご連絡ください。{% else %}If you are interested in our research, first-principles calculations, or applications we have developed, <br> please contact us.{% endif %}</h1>
+    </section>
+
+    <br>
+
+    <section class="main_left">
+        <h1>{% if lang == 'ja' %}■研究内容{% else %}■Research Fields{% endif %}</h1>
+    </section>
+    
+
+    <section class="main_black">
+        <h1>{% if lang == 'ja' %}・ハロゲン化物単結晶の合成{% else %}・Synthesis of Halide Single Crystals{% endif %} </h1>
+    </section>
+
+    <section class="alltext">
+        <h1>{% if lang == 'ja' %}主にハロゲン化物結晶を溶融合成法、ブリッジマンストックバーガー法や気相輸送法で作製しております。
+            {% else %}I mainly fabricate halide crystals by the Bridgman-Stockberger method or vapor phase transport.{% endif %} </h1>
+    </section>
+
+    <div>
+        <img src="{{ url_for('static', filename='fig/fig2.jpg') }}"  style="width: 30%; max-height: 1000px; object-fit: cover; display: block; margin: auto;"">
+    </div>
+
+    
+    <section class="caption">
+        <h1>{% if lang == 'ja' %}図 合成した結晶
+            {% else %}Fig. Grown crystals{% endif %} </h1>
+    </section>
+    
+
+    <section class="main_black">
+        <h1>{% if lang == 'ja' %}・光学特性の評価{% else %}・Evaluation of optical properties{% endif %} </h1>
+    </section>
+
+    <section class="main_black">
+        <h1>{% if lang == 'ja' %}・放射線特性の評価{% else %}・Evaluation of radiation properties{% endif %} </h1>
+    </section>
+
+    <section class="main_black">
+        <h1>{% if lang == 'ja' %}・第一原理計算による無機材料の解析{% else %}・Analysis of inorganic materials by first-principles calculations.{% endif %} </h1>
+    </section>
+
+    <section class="main_black">
+        <h1>{% if lang == 'ja' %}・第一原理計算による電子状態データベース作成{% else %}・Creation of electronic structure database by first-principles calculations.{% endif %} </h1>
+    </section>
+
+    <section class="alltext">
+        <h1>{% if lang == 'ja' %}構造緩和計算~scf計算~nscf計算~band計算を自動で行うサブルーチンを開発し、複数ファイルにわたり自動で24h計算する体制をとっています。
+            さらに計算結果をクラウド上で公開し、同じような材料群を研究するグループ内で結果を共有できるような仕組みを取っています。
+            {% else %}I have developed a subroutine that automatically performs structural relaxation calculations~scf calculations~nscf calculations~band calculations, and we have a system that automatically performs calculations over multiple files for 24 hours.
+            In addition, we have a system in which calculation results are made public on the cloud so that results can be shared among groups studying similar materials.{% endif %} </h1>
+    </section>
+
+
+    <div>
+    <img src="{{ url_for('static', filename='fig/fig1.png') }}"  style="width: 40%; max-height: 1000px; object-fit: cover; display: block; margin: auto;">
+    </div>
+
+    <section class="caption">
+        <h1>{% if lang == 'ja' %}図 サブルーチンの概要
+            {% else %}Fig. Overview of subroutine{% endif %} </h1>
+    </section>
+
+    <section class="main_black">
+        <h1>{% if lang == 'ja' %}・X線回折データ解析アプリケーションの開発{% else %}・Development of X-ray diffraction data analysis application{% endif %} </h1>
+    </section>
+
+    <section class="alltext">
+        <h1>{% if lang == 'ja' %}粉末X線回折パターンのピークサーチをするアプリケーションを開発しました。データベースとして、Crystallography Open Database(https://www.crystallography.net/cod/)
+            に収録されている50万以上のcifファイルからピークサーチすることが出来ます。またVESTAと連携することも可能です。またRigaku社のXRDデータである.rasファイルをcsvに変換する機能も付随しております。
+            {% else %}I have developed an application for peak search of powder X-ray diffraction patterns. It can peak search from more than 500,000 cif files in Crystallography Open Database (https://www.crystallography.net/cod/)
+            as a database, and can peak search from more than 500,000 cif files. It can also be linked to VESTA. It also includes a function to convert Rigaku's XRD data, .ras files, to csv.{% endif %} </h1>
+    </section>
+
+    <div>
+        <img src="{{ url_for('static', filename='fig/fig2.png') }}"  style="width: 80%; max-height: 1000px; object-fit: cover; display: block; margin: auto;">
+    </div>
+
+    
+    <section class="caption">
+        <h1>{% if lang == 'ja' %}開発したXRDデータ解析アプリケーション
+            {% else %}Fig. Developed XRD data analysis application{% endif %} </h1>
+    </section>
+
+    <div>
+        <img src="{{ url_for('static', filename='fig/fig3.png') }}"  style="width: 80%; max-height: 1000px; object-fit: cover; display: block; margin: auto;">
+    </div>
+
+    
+    <section class="caption">
+        <h1>{% if lang == 'ja' %}ピークサーチの様子
+            {% else %}Fig. Peak Search{% endif %} </h1>
+    </section>
+
+    <section class="main_black">
+        <h1>{% if lang == 'ja' %}・光学特性評価アプリケーションの開発{% else %}・Development of optical characterization applications{% endif %} </h1>
+    </section>
+
+    <section class="main_black">
+        <h1>{% if lang == 'ja' %}・その他プログラム{% else %}・The others programs{% endif %} </h1>
+    </section>
+
+    <section class="alltext">
+        <h1>{% if lang == 'ja' %}PDF merger  &emsp;: &emsp; <a href="https://stramlit-pdf-5xpxuwhoxdktwyrravksrx.streamlit.app/"> https://stramlit-pdf-5xpxuwhoxdktwyrravksrx.streamlit.app/
+            {% else %}PDF merger : <a href="https://stramlit-pdf-5xpxuwhoxdktwyrravksrx.streamlit.app/"> https://stramlit-pdf-5xpxuwhoxdktwyrravksrx.streamlit.app/{% endif %} </h1>
+    </section>
+
+
+    <br>
+    
+    <a href="{{ url_for('research', lang=lang) }}" class="cta-button">{% if lang == 'ja' %}研究内容を見る{% else %}Explore Research Projects{% endif %}</a>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            let slides = document.getElementsByClassName("slide");
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex - 1].style.display = "block";
+        }
+
+        setInterval(() => plusSlides(1), 5000);
+    </script>
+{% endblock %}
