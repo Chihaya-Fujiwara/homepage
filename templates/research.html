@@ -4,14 +4,22 @@
 
 {% block content %}
     <!-- 言語切り替え -->
+    
     <div class="lang-toggle">
         <a href="{{ url_for('research', lang='ja') }}">🇯🇵 日本語</a> | 
         <a href="{{ url_for('research', lang='en') }}">🇬🇧 English</a>
     </div>
-        
+    
+    <div class="sidebar">
+        <ul>
+            <li><a href="#keyword">{% if lang == 'ja' %}■研究キーワード{% else %}■Key words{% endif %}</a></li>
+            <li><a href="#research">{% if lang == 'ja' %}■研究内容{% else %}■Research Fields{% endif %}</a></li>
+        </ul>
+    </div>
+
     <br>
 
-    <section class="main_left">
+    <section class="main_left" id="keyword">
         <h1>{% if lang == 'ja' %}■研究キーワード{% else %}■Key words{% endif %}</h1>
     </section>
 
@@ -27,7 +35,7 @@
 
     <br>
 
-    <section class="main_left">
+    <section class="main_left"  id="research">
         <h1>{% if lang == 'ja' %}■研究内容{% else %}■Research Fields{% endif %}</h1>
     </section>
     

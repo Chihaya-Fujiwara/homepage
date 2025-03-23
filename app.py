@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
 import pandas as pd
+import requests
+import json
 
 app = Flask(__name__)
 
@@ -38,6 +40,11 @@ def projects():
 def publications():
     lang = request.args.get('lang', 'ja')
     
+    
+    url = "https://api.researchmap.jp/C_Fujiwara"
+    response = requests.get(url)
+    jsonData = response.json()
+    
     data_paper = pd.read_csv("data_paper.csv",encoding="Shift-Jis")
     int_pre = pd.read_csv("int_pre.csv",encoding="Shift-Jis")
     dom_pre = pd.read_csv("dom_pre.csv",encoding="Shift-Jis")
@@ -49,7 +56,7 @@ def publications():
     # HTML にデータを渡す
     return render_template('publications.html', lang=lang,data_paper=data_paper,int_pre=int_pre,dom_pre=dom_pre)
     
-    
+
 @app.route('/conferences')
 def conferences():
     lang = request.args.get('lang', 'ja')

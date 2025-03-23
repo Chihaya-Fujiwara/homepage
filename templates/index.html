@@ -8,6 +8,16 @@
         <a href="{{ url_for('index', lang='ja') }}">🇯🇵 日本語</a> | 
         <a href="{{ url_for('index', lang='en') }}">🇬🇧 English</a>
     </div>
+
+        
+    <div class="sidebar">
+        <ul>
+            <li><a href="#contact">{% if lang == 'ja' %}■連絡先{% else %}■Contact{% endif %}</a></li>
+            <li><a href="#new">{% if lang == 'ja' %}■新着{% else %}■New information{% endif %}</a></li>
+            <li><a href="#page">{% if lang == 'ja' %}■関連ページ一覧{% else %}■Related Pages{% endif %}</a></li>
+            <li><a href="#page">{% if lang == 'ja' %}■合成した結晶の写真{% else %}■Photograph of synthesized crystals{% endif %}</a></li>
+        </ul>
+    </div>
     
     <section class="hero">
         <h1>{% if lang == 'ja' %}東北大学 博士後期課程 藤原千隼のホームページです.{% else %}Homepage of Chihaya Fujiwara, Ph.D. Student in Tohoku Univ.{% endif %}</h1><br>
@@ -20,16 +30,16 @@
     
     <br>
 
-    <section class="main_left_index">
+    <section class="main_left_index" id="contact">
         <h1>{% if lang == 'ja' %}■連絡先{% else %}■Contact{% endif %}</h1>
     </section>
     <section class="main_black">
-        <h1>fujiwara.chihaya[at]ararara.co.jp</h1>
+        <h1>・fujiwara.chihaya[at]ararara.co.jp</h1>
     </section>
     
     <br>
 
-    <section class="main_left_index">
+    <section class="main_left_index" id ="new">
         <h1>{% if lang == 'ja' %}■新着{% else %}■New information{% endif %}</h1>
     </section>
     <section class="main_black">
@@ -39,7 +49,7 @@
 
     <br>
     
-    <section class="main_left_index">
+    <section class="main_left_index" id="Page">
         <h1>{% if lang == 'ja' %}■関連ページ一覧{% else %}■Related Pages{% endif %}</h1>
     </section>
     <section class="main_s">
@@ -52,7 +62,7 @@
 
     <br>
 
-    <section class="main_left_index">
+    <section class="main_left_index" id='picture'>
         <h1>{% if lang == 'ja' %}■合成した結晶の写真{% else %}■Photograph of synthesized crystals{% endif %}</h1>
     </section>
     

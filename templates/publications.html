@@ -9,9 +9,20 @@
         <a href="{{ url_for('publications', lang='en') }}">🇬🇧 English</a>
     </div>
 
+    <div class="sidebar">
+        <ul>
+            <li><a href="#grants">{% if lang == 'ja' %}■競争的資金{% else %}■Grants{% endif %}</a></li>
+            <li><a href="#awards">{% if lang == 'ja' %}■受賞{% else %}■Awards{% endif %}</a></li>
+            <li><a href="#papers">{% if lang == 'ja' %}■論文{% else %}■Peer-reviewed papers{% endif %}</a></li>
+            <li><a href="#intl-conferences">{% if lang == 'ja' %}■国際学会発表{% else %}■International Conferences{% endif %}</a></li>
+            <li><a href="#domestic-conferences">{% if lang == 'ja' %}■国内学会発表{% else %}■Domestic Conferences{% endif %}</a></li>
+        </ul>
+    </div>
+    
+    
     <br>
 
-    <section class="main_left">
+    <section class="main_left" id="grants">
         <h1>{% if lang == 'ja' %}■競争的資金{% else %}■Grants{% endif %}</h1>
     </section>
     
@@ -26,7 +37,7 @@
     <br>
 
 
-    <section class="main_left">
+    <section class="main_left" id="awards">
         <h1>{% if lang == 'ja' %}■受賞{% else %}■Awards{% endif %}</h1>
     </section>
 
@@ -39,7 +50,7 @@
     <br>
 
 
-    <section class="main_left">
+    <section class="main_left" id="papers">
         <h1>{% if lang == 'ja' %}■論文{% else %}■Peer-reviewed papers{% endif %}</h1>
     </section>
 
@@ -63,7 +74,7 @@
 
     <br>
 
-    <section class="main_left">
+    <section class="main_left" id="intl-conferences">
         <h1>{% if lang == 'ja' %}■国際学会発表{% else %}■International Conferences{% endif %}</h1>
     </section>
 
@@ -77,8 +88,6 @@
                     replace("千隼 藤原", '<span class="highlight-author"> 藤原 千隼</span>') |
                     replace("Chihaya. Fujiwara", '<span class="highlight-author"> Chihaya. Fujiwara</span>') |
                     safe }}
-
-                    
                 </p>
                 <p><strong>Conference:</strong> {{row.event_name}}</p>
                 <p><strong>Date:</strong> {{row.date}}</p>
@@ -89,7 +98,7 @@
 
     <br>
 
-    <section class="main_left">
+    <section class="main_left" id="domestic-conferences">
         <h1>{% if lang == 'ja' %}■国内学会発表{% else %}■Domestic Conferences{% endif %}</h1>
     </section>
 
@@ -100,28 +109,16 @@
                 <p><strong>Authors:</strong> 
                     {{ row.authors | 
                     replace("Chihaya Fujiwara", '<span class="highlight-author"> Chihaya Fujiwara</span>') | 
-                    replace("千隼 藤原", '<span class="highlight-author"> 藤原 千隼</span>') |
+                    replace("藤原 千隼", '<span class="highlight-author">藤原 千隼</span>') |
+                    replace("藤原千隼", '<span class="highlight-author">藤原千隼</span>') |
                     replace("Chihaya. Fujiwara", '<span class="highlight-author"> Chihaya. Fujiwara</span>') |
-                    safe }}
-
-                    
+                    safe }}                    
                 </p>
                 <p><strong>Conference:</strong> {{row.event_name}}</p>
                 <p><strong>Date:</strong> {{row.date}}</p>
             </article>
             <hr>    
         {% endfor %}
-    </section>
-
-
-    <section class="main_left">
-        <h1>{% if lang == 'ja' %}■国際学会発表{% else %}■International Conferences{% endif %}</h1>
-    </section>
-
-    <section class="conferences">
-        <ul>
-            <li>2022/8 次世代放射線シンポジウム 優秀発表賞</li>
-        </ul>
     </section>
 
     <br>
