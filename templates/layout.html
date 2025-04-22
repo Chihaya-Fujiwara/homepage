@@ -18,10 +18,7 @@
                 <li><a href="{{ url_for('about', lang=lang) }}">{% if lang == 'ja' %}研究者紹介{% else %}About{% endif %}</a></li>
                 <li><a href="{{ url_for('research', lang=lang) }}">{% if lang == 'ja' %}研究内容{% else %}Research{% endif %}</a></li>
                 <li><a href="{{ url_for('publications', lang=lang) }}">{% if lang == 'ja' %}業績{% else %}Publications{% endif %}</a></li>
-<<<<<<< HEAD
-=======
                 <li><a href="{{ url_for('projects', lang=lang) }}">{% if lang == 'ja' %}Notes{% else %}Notes{% endif %}</a></li>
->>>>>>> b52a973 (first commit)
                 <li><a href="{{ url_for('contact', lang=lang) }}">{% if lang == 'ja' %}お問い合わせ{% else %}Contact{% endif %}</a></li>
             </ul>
         </nav>

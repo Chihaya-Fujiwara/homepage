@@ -20,20 +20,6 @@ def research():
     lang = request.args.get('lang', 'ja')
     return render_template('research.html', lang=lang)
 
-<<<<<<< HEAD
-@app.route('/research/python')
-def research_python():
-    lang = request.args.get('lang', 'ja')
-    return render_template('research_python.html', lang=lang)
-
-@app.route('/research/dft')
-
-def research_dft():
-    lang = request.args.get('lang', 'ja')
-    return render_template('research_dft.html', lang=lang)
-
-=======
->>>>>>> b52a973 (first commit)
 @app.route('/projects')
 def projects():
     lang = request.args.get('lang', 'ja')
@@ -70,17 +56,6 @@ def contact():
     lang = request.args.get('lang', 'ja')
     return render_template('contact.html', lang=lang)
 
-<<<<<<< HEAD
-@app.route('/research/accordion')
-def research_accordion():
-    lang = request.args.get('lang', 'ja')
-    return render_template('research_accordion.html', lang=lang)
-
-@app.route('/gallery')
-def gallery():
-    lang = request.args.get('lang', 'ja')
-    return render_template('gallery.html', lang=lang)
-=======
 
 @app.route('/note/python')
 def note_python():
@@ -96,7 +71,6 @@ def note_first_principles():
 #def gallery():
 #    lang = request.args.get('lang', 'ja')
 #    return render_template('gallery.html', lang=lang)
->>>>>>> b52a973 (first commit)
 
 if __name__ == '__main__':
     app.run(debug=True)
