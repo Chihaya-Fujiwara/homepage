@@ -1,0 +1,164 @@
+{% extends "layout.html" %}
+
+{% block title %}研究業績{% endblock %}
+
+{% block content %}
+    <!-- 言語切り替え -->
+    <div class="lang-toggle">
+        <a href="{{ url_for('publications', lang='ja') }}">🇯🇵 日本語</a> | 
+        <a href="{{ url_for('publications', lang='en') }}">🇬🇧 English</a>
+    </div>
+
+    <div class="sidebar">
+<<<<<<< HEAD
+        <ul>
+=======
+>>>>>>> b52a973 (first commit)
+            <li><a href="#grants">{% if lang == 'ja' %}■競争的資金{% else %}■Grants{% endif %}</a></li>
+            <li><a href="#awards">{% if lang == 'ja' %}■受賞{% else %}■Awards{% endif %}</a></li>
+            <li><a href="#papers">{% if lang == 'ja' %}■論文{% else %}■Peer-reviewed papers{% endif %}</a></li>
+            <li><a href="#intl-conferences">{% if lang == 'ja' %}■国際学会発表{% else %}■International Conferences{% endif %}</a></li>
+            <li><a href="#domestic-conferences">{% if lang == 'ja' %}■国内学会発表{% else %}■Domestic Conferences{% endif %}</a></li>
+<<<<<<< HEAD
+        </ul>
+=======
+>>>>>>> b52a973 (first commit)
+    </div>
+    
+    
+    <br>
+
+    <section class="main_left" id="grants">
+        <h1>{% if lang == 'ja' %}■競争的資金{% else %}■Grants{% endif %}</h1>
+    </section>
+    
+    <section class="alltext">
+        <h2>2025/4~2028/3 (代表) 日本学術振興会 特別研究員奨励費 DC1</h2>
+        <h2>2024/4~2025/3 (代表) 2024年度 ヨウ素学会研究助成</h2>
+        <h2>2024/4~2025/3 (代表) 第一稀元素化学工業株式会社 研究助成</h2>
+        <h2>2024/4~2025/3 (代表) 東北大学金属材料研究所 共同利用 若手萌芽研究</h2>
+        </ul>
+    </section>
+
+    <br>
+
+<<<<<<< HEAD
+
+=======
+>>>>>>> b52a973 (first commit)
+    <section class="main_left" id="awards">
+        <h1>{% if lang == 'ja' %}■受賞{% else %}■Awards{% endif %}</h1>
+    </section>
+
+    <section class="alltext">
+        <h2>2022/9 <br>日本セラミックス協会第35回秋季シンポジウム特定セッション クリスタルサイエンス-結晶育成技術の新展開と材料研究- 優秀発表賞, 新規Li2Hf(Br,I)6中性子シンチレータの結晶構造と発光特性, 公益社団法人日本セラミックス協会 </h2>
+        <h2>2022/8 <br>次世代放射線シンポジウム優秀発表賞, 原発廃炉に向けたリモート・リアルタイム中性子・ガンマ線両モニタ用の赤色発光Li2Hf(I,Br)6シンチレータの特性, 公益社団法人 応用物理学会 放射線分科会 </h2>
+    </section>
+
+
+    <br>
+
+
+    <section class="main_left" id="papers">
+        <h1>{% if lang == 'ja' %}■論文{% else %}■Peer-reviewed papers{% endif %}</h1>
+    </section>
+
+    <section class="alltext">
+        {% for row in data_paper %}
+            <article>
+                <h2>{{ row.paper }}</h2>
+                <p><strong>Authors:</strong> 
+                    {{ row.authors | replace("Chihaya Fujiwara", '<span class="highlight-author"> Chihaya Fujiwara</span>') | 
+                    replace("千隼 藤原", '<span class="highlight-author"> 藤原 千隼</span>') |safe }}
+                    
+                </p>
+                {% if row.doi %}
+                    <p><strong>DOI:</strong> <a href="https://doi.org/{{ row.doi }}" target="_blank">{{ row.doi }}</a></p>
+                {% endif %}
+                <p><strong>Reviewed:</strong> {{ row.reviewed }}</p>
+            </article>
+            <hr>    
+        {% endfor %}
+    </section>
+
+    <br>
+
+    <section class="main_left" id="intl-conferences">
+        <h1>{% if lang == 'ja' %}■国際学会発表{% else %}■International Conferences{% endif %}</h1>
+    </section>
+
+    <section class="alltext">
+        {% for row in int_pre %}
+            <article>
+                <h2>{{ row.title }}</h2>
+                <p><strong>Authors:</strong> 
+                    {{ row.authors | 
+                    replace("Chihaya Fujiwara", '<span class="highlight-author"> Chihaya Fujiwara</span>') | 
+                    replace("千隼 藤原", '<span class="highlight-author"> 藤原 千隼</span>') |
+                    replace("Chihaya. Fujiwara", '<span class="highlight-author"> Chihaya. Fujiwara</span>') |
+                    safe }}
+                </p>
+                <p><strong>Conference:</strong> {{row.event_name}}</p>
+                <p><strong>Date:</strong> {{row.date}}</p>
+            </article>
+            <hr>    
+        {% endfor %}
+    </section>
+
+    <br>
+
+    <section class="main_left" id="domestic-conferences">
+        <h1>{% if lang == 'ja' %}■国内学会発表{% else %}■Domestic Conferences{% endif %}</h1>
+    </section>
+
+    <section class="alltext">
+        {% for row in dom_pre %}
+            <article>
+                <h2>{{ row.title }}</h2>
+                <p><strong>Authors:</strong> 
+                    {{ row.authors | 
+                    replace("Chihaya Fujiwara", '<span class="highlight-author"> Chihaya Fujiwara</span>') | 
+                    replace("藤原 千隼", '<span class="highlight-author">藤原 千隼</span>') |
+                    replace("藤原千隼", '<span class="highlight-author">藤原千隼</span>') |
+                    replace("Chihaya. Fujiwara", '<span class="highlight-author"> Chihaya. Fujiwara</span>') |
+                    safe }}                    
+                </p>
+                <p><strong>Conference:</strong> {{row.event_name}}</p>
+                <p><strong>Date:</strong> {{row.date}}</p>
+            </article>
+            <hr>    
+        {% endfor %}
+    </section>
+
+    <br>
+
+    <a href="{{ url_for('research', lang=lang) }}" class="cta-button">
+        {% if lang == 'ja' %}研究内容を見る{% else %}Explore Research Projects{% endif %}
+    </a>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let slides = document.getElementsByClassName("slide");
+            if (slides.length > 0) {
+                let slideIndex = 1;
+                showSlides(slideIndex);
+
+                function plusSlides(n) {
+                    showSlides(slideIndex += n);
+                }
+
+                function showSlides(n) {
+                    if (n > slides.length) { slideIndex = 1; }
+                    if (n < 1) { slideIndex = slides.length; }
+                    for (let i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";
+                    }
+                    slides[slideIndex - 1].style.display = "block";
+                }
+
+                setInterval(() => plusSlides(1), 5000);
+            }
+        });
+    </script>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}お問い合わせ{% endblock %}
+
+{% block content %}
+<<<<<<< HEAD
+    <h1>お問い合わせ</h1>
+    <p>ご質問がある場合は、以下のメールアドレスまでご連絡ください。</p>
+    <p><strong>Email:</strong> example@research.com</p>
+=======
+
+    <div class="lang-toggle">
+        <a href="{{ url_for('contact', lang='ja') }}">🇯🇵 日本語</a> | 
+        <a href="{{ url_for('contact', lang='en') }}">🇬🇧 English</a>
+    </div>
+
+    <section class="main_left" id="grants">
+        <h1>{% if lang == 'ja' %}■連絡先{% else %}■Contacts{% endif %}</h1>
+    </section>
+
+    <section class="alltext">
+        <h2>{% if lang == 'ja' %}ご質問がある場合は、以下のメールアドレスまでご連絡ください。{% else %}If you hanve any questions, feel free to contact me at following email.{% endif %}</h2>
+        <h2><strong>Email:</strong> fujiwara.chihaya.p8@dc.tohoku.ac.jp</h2>
+    </section>
+>>>>>>> b52a973 (first commit)
+{% endblock %}

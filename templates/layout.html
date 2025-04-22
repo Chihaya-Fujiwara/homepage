@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}研究者サイト{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- ナビゲーションバー -->
+    <header class="navbar">
+        <div class="logo">Fujiwara Chihaya (Tohoku univ.)</div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index', lang=lang) }}">{% if lang == 'ja' %}ホーム{% else %}Home{% endif %}</a></li>
+                <li><a href="{{ url_for('about', lang=lang) }}">{% if lang == 'ja' %}研究者紹介{% else %}About{% endif %}</a></li>
+                <li><a href="{{ url_for('research', lang=lang) }}">{% if lang == 'ja' %}研究内容{% else %}Research{% endif %}</a></li>
+                <li><a href="{{ url_for('publications', lang=lang) }}">{% if lang == 'ja' %}業績{% else %}Publications{% endif %}</a></li>
+<<<<<<< HEAD
+=======
+                <li><a href="{{ url_for('projects', lang=lang) }}">{% if lang == 'ja' %}Notes{% else %}Notes{% endif %}</a></li>
+>>>>>>> b52a973 (first commit)
+                <li><a href="{{ url_for('contact', lang=lang) }}">{% if lang == 'ja' %}お問い合わせ{% else %}Contact{% endif %}</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 言語切り替え -->
+    <div class="lang-toggle">
+        <a href="?lang=ja">🇯🇵 日本語</a> | 
+        <a href="?lang=en">🇬🇧 English</a>
+    </div>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 My Research. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

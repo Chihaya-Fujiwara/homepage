@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block title %}ホーム{% endblock %}
+
+{% block content %}
+    <!-- 言語切り替え -->
+    <div class="lang-toggle">
+        <a href="{{ url_for('about', lang='ja') }}">🇯🇵 日本語</a> | 
+        <a href="{{ url_for('about', lang='en') }}">🇬🇧 English</a>
+    </div>
+
+        
+    <div class="sidebar">
+<<<<<<< HEAD
+        <ul>
+            <li><a href="#name">{% if lang == 'ja' %}■自己紹介{% else %}■Name{% endif %}</a></li>
+            <li><a href="#soc">{% if lang == 'ja' %}■所属学会{% else %}■Affiliated academic society{% endif %}</a></li>
+            <li><a href="#carrer">{% if lang == 'ja' %}■経歴{% else %}■ Career{% endif %}</a></li>
+        </ul>
+=======
+            <li><a href="#name">{% if lang == 'ja' %}■自己紹介{% else %}■Name{% endif %}</a></li>
+            <li><a href="#soc">{% if lang == 'ja' %}■所属学会{% else %}■Affiliated academic society{% endif %}</a></li>
+            <li><a href="#carrer">{% if lang == 'ja' %}■経歴{% else %}■ Career{% endif %}</a></li>
+>>>>>>> b52a973 (first commit)
+    </div>
+        
+    <br>
+
+    <section class="main_left" id="name">
+        <h1>{% if lang == 'ja' %}■自己紹介{% else %}■Name{% endif %}</h1>
+    </section>
+    <section class="main_black">
+        <h1>{% if lang == 'ja' %}・藤原千隼{% else %}・Fujiwara Chiaya{% endif %} </h1>
+    </section>
+    
+    <br>
+
+    
+    <section class="main_left" id="soc">
+        <h1>{% if lang == 'ja' %}■所属学会{% else %}■Affiliated academic society{% endif %}</h1>
+    </section>
+    <section class="main_black">
+        <h1>{% if lang == 'ja' %}・応用物理学会{% else %}・The Japan Society of Applied Physics{% endif %} </h1>
+    </section>
+
+    <section class="main_black">
+        <h1>{% if lang == 'ja' %}・ヨウ素学会{% else %}・The Society of Iodine Science{% endif %} </h1>
+    </section>
+    <br>
+
+    <section class="main_left" id ="career">
+        <h1>{% if lang == 'ja' %}■経歴{% else %}■ Career{% endif %}</h1>
+    </section>
+    <section class="main_black">
+        <h1>{% if lang == 'ja' %}・2025/4 ~ 現在 &emsp;: &emsp; 独立行政法人 日本学術振興会 特別研究員 DC1 
+            {% else %}・2025/4 ~ Now &emsp;: &emsp; JSPS Research Fellowship for Young Scientists（DC1） {% endif %}</h1>
+        <h1>{% if lang == 'ja' %}・2025/4 ~ 現在 &emsp;: &emsp; 東北大学 工学研究科材料 システム工学専攻 博士後期課程 1年 
+            {% else %}・2025/4 ~ Now &emsp;: &emsp; Tohoku University, Faculty of Engineering, Department of Materials Processing, Doctoral course{% endif %}</h1>
+        <h1>{% if lang == 'ja' %}・2023/4 ~ 2025/3 &emsp;: &emsp; 地方独立行政法人 東京都立産業技術研究センター 研究員 
+            {% else %}・2023/4 ~ 2025/3 &emsp;: &emsp; Tokyo Metropolitan Industrial Technology Research Institute, Researcher{% endif %}</h1>
+        <h1>{% if lang == 'ja' %}・2021/4 ~ 2023/3 &emsp;: &emsp; 東北大学 工学研究科材料 システム工学専攻 修士課程
+            {% else %}・2021/4 ~ 2023/3&emsp;: &emsp;  Tohoku University, Faculty of Engineering, Department of Materials Processing, Master course{% endif %}</h1>
+        <h1>{% if lang == 'ja' %}・2017/4 ~ 2021/3 &emsp;: &emsp; 東北大学 工学部 材料科学総合学科
+            {% else %}・2017/4 ~ 2021/3 &emsp;: &emsp; Department of Materials Science and Engineering.{% endif %}</h1>
+        <h1>{% if lang == 'ja' %}・2013/4 ~ 2016/3 &emsp;: &emsp; 熊本県立 熊本高等学校
+            {% else %}・2013/4 ~ 2016/3 &emsp;: &emsp; Kumamoto Prefectural Kumamoto High School{% endif %}</h1>
+    </section>
+
+    <br>
+    
+        
+    <a href="{{ url_for('research', lang=lang) }}" class="cta-button">{% if lang == 'ja' %}研究内容を見る{% else %}Explore Research Projects{% endif %}</a>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            let slides = document.getElementsByClassName("slide");
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex - 1].style.display = "block";
+        }
+
+        setInterval(() => plusSlides(1), 5000);
+    </script>
+{% endblock %}

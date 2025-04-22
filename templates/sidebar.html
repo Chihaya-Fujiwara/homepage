@@ -1,0 +1,31 @@
+<div class="sidebar">
+    
+    <li>
+        <span class="caret">{% if lang == 'ja' %}■Python{% else %}■Python{% endif %}</span>
+            <span class="side">
+            <li><a href="{{ url_for('note_python') }}">{% if lang == 'ja' %}・Jupyter環境構築{% else %}・Jupyter環境構築{% endif %}</a></li>
+            <li><a href="{{ url_for('note_first_principles') }}">{% if lang == 'ja' %}・第一原理計算計算{% else %}・First First-Principal Calculation{% endif %}</a></li>        
+        </span>
+    </li>
+
+    <br>
+
+    <li>
+        <span class="caret">{% if lang == 'ja' %}■Quantum espresso{% else %}■Quantum espresso{% endif %}</span>
+            <li><a href="{{ url_for('note_python') }}">{% if lang == 'ja' %}・Cif2cell{% else %}・Cif2cell{% endif %}</a></li>
+            <li><a href="{{ url_for('note_first_principles') }}">{% if lang == 'ja' %}・k点パス{% else %}・k points path{% endif %}</a></li>
+            <li><a href="{{ url_for('note_first_principles') }}">{% if lang == 'ja' %}・xcrysden{% else %}・xcrysden{% endif %}</a></li>
+            <li><a href="{{ url_for('note_first_principles') }}">{% if lang == 'ja' %}・行列計算{% else %}・行列計算{% endif %}</a></li>        
+    </li>
+
+    <br>
+
+    <li>
+        <span class="caret">{% if lang == 'ja' %}■自作クラスタ計算機{% else %}■自作クラスタ計算機{% endif %}</span>
+            <li><a href="{{ url_for('note_python') }}">{% if lang == 'ja' %}・Cif2cell{% else %}・Cif2cell{% endif %}</a></li>
+            <li><a href="{{ url_for('note_first_principles') }}">{% if lang == 'ja' %}・k点パス{% else %}・k points path{% endif %}</a></li>        
+    </li>
+
+    
+</div>
+    

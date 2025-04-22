@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block title %}研究内容{% endblock %}
+
+{% block content %}
+    <!-- 言語切り替え -->
+    <div class="lang-toggle">
+        <a href="{{ url_for('research', lang='ja') }}">🇯🇵 日本語</a> | 
+        <a href="{{ url_for('research', lang='en') }}">🇬🇧 English</a>
+    </div>
+        
+    <br>
+
+    <section class="main_left">
+        <h1>{% if lang == 'ja' %}■自己紹介{% else %}■Name{% endif %}</h1>
+    </section>
+    <section class="main_black">
+        <h1>{% if lang == 'ja' %}藤原千隼{% else %} Fujiwara Chiaya{% endif %} </h1>
+    </section>
+    
+    <br>
+
+    <section class="main_left">
+        <h1>{% if lang == 'ja' %}■経歴{% else %}■ Career{% endif %}</h1>
+    </section>
+    <section class="main_black">
+        <h1>{% if lang == 'ja' %}・2025/4 ~ 現在 &emsp;: &emsp; 独立行政法人 日本学術振興会 特別研究員 DC1 
+            {% else %}・2025/4 : 東北大学 工学研究科材料 システム工学専攻 博士後期課程 {% endif %}</h1>
+        <h1>{% if lang == 'ja' %}・2025/4 ~ 現在 &emsp;: &emsp; 東北大学 工学研究科材料 システム工学専攻 博士後期課程 1年 
+            {% else %}・2025/4 : 東北大学 工学研究科材料 システム工学専攻 博士後期課程 {% endif %}</h1>
+        <h1>{% if lang == 'ja' %}・2023/4 ~ 2025/3 &emsp;: &emsp; 地方独立行政法人 東京都立産業技術研究センター 研究員 
+            {% else %}・2025/4/1 &emsp;: &emsp; Entered Tohoku University Doctoral Program.{% endif %}</h1>
+        <h1>{% if lang == 'ja' %}・2021/4 ~ 2023/3 &emsp;: &emsp; 東北大学 工学研究科材料 システム工学専攻 修士課程
+            {% else %}・2025/4/1 &emsp;: &emsp; Entered Tohoku University Doctoral Program.{% endif %}</h1>
+        <h1>{% if lang == 'ja' %}・2017/4 ~ 2021/3 &emsp;: &emsp; 東北大学 工学部 材料科学総合学科
+            {% else %}・2025/4/1 &emsp;: &emsp; Entered Tohoku University Doctoral Program.{% endif %}</h1>
+        <h1>{% if lang == 'ja' %}・2013/4 ~ 2016/3 &emsp;: &emsp; 熊本県立 熊本高等学校
+            {% else %}・2025/4/1 &emsp;: &emsp; Entered Tohoku University Doctoral Program.{% endif %}</h1>
+    </section>
+
+    <br>
+    
+        
+    <a href="{{ url_for('projects', lang=lang) }}" class="cta-button">{% if lang == 'ja' %}研究内容を見る{% else %}Explore Research Projects{% endif %}</a>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            let slides = document.getElementsByClassName("slide");
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex - 1].style.display = "block";
+        }
+
+        setInterval(() => plusSlides(1), 5000);
+    </script>
+{% endblock %}

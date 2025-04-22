@@ -1,0 +1,125 @@
+{% extends "layout.html" %}
+
+
+
+{% block content %}
+    
+    <div class="lang-toggle">
+        <a href="{{ url_for('note_python', lang='ja') }}">🇯🇵 日本語</a> |
+        <a href="{{ url_for('note_python', lang='en') }}">🇬🇧 English</a>
+    </div>
+
+    {% include "sidebar.html" %}
+
+
+    <section class="header">
+        <h1>{% if lang == 'ja' %}VSコードでJupyter notebookを使用する方法
+            {% else %}How to use Jupyter notebook with VS code{% endif %}</h1>
+    </section>
+
+    <section class="alltext">
+        <h1>{% if lang == 'ja' %}Anaconda distributionで使用するのが一般的であるjupyter notebookであるが、vscode上でよりコーディングがやり易い上、
+            データ管理もスムーズに行える。jupyter notebookがそもそもどういうものかは下記記事が非常に分かりやすいので参照されたい。
+            (https://qiita.com/hinastory/items/e179361ae806e8776c70) 
+            {% else %}Although jupyter notebook is commonly used with Anaconda distribution, it is easier to code on vscode, and data management is also smoother,
+            Please refer to the following article for a very clear explanation of what jupyter notebook is all about.
+            (https://qiita.com/hinastory/items/e179361ae806e8776c70)
+            {% endif %}
+        </h1>
+    </section>
+
+
+    <section class="main_left">
+        <h1>{% if lang == 'ja' %}Pythonのインストール{% else %}Install python{% endif %}</h1>
+    </section>
+    <section class="alltext">
+        <h1>{% if lang == 'ja' %}
+            任意のバージョンのpythonを以下のurlからダウンロードする。(https://www.python.org/)
+            Anacondaの場合は下記urlからダウンロードする。(https://www.anaconda.com/download)
+            {% else %}
+            Download any version of python from the following url (https://www.python.org/)
+            For Anaconda, download from the following url. (https://www.anaconda.com/download)
+            {% endif %}
+        </h1>
+    </section>
+
+    <section class="main_left">
+        <h1>{% if lang == 'ja' %}
+            Visual studio code (VScode)のインストール
+            {% else %}
+            Install Visual studio code (VScode)
+            {% endif %}
+        </h1>
+    </section>
+    <section class="alltext">
+        <h1>{% if lang == 'ja' %}
+            任意のバージョンのVScodeを以下のurlからダウンロードする。(https://code.visualstudio.com/)
+            {% else %}
+            Download any version of VScode from the following url (https://code.visualstudio.com/)
+            {% endif %}
+        </h1>
+    </section>
+
+    <section class="main_left">
+        <h1>{% if lang == 'ja' %}
+            仮想環境の作製 & Jupyter pakegeのインストール
+            {% else %}
+            Creation of virtual environments & installation of Jupyter pakege
+            {% endif %}
+        </h1>
+    </section>
+    <section class="alltext">
+        <h1>{% if lang == 'ja' %}
+             Anaconda環境ではあらかじめjupyter環境が用意されているため、インストールしただけでjupyter
+            notebookが使用できるが、現在pythonをインストールしたのみなのでjupyter notebookに必要なパッケージをインストールする
+            必要がある。<br>
+            jupyter pakegeのインストールに先立ち、仮想環境を用意する。検索バーから"cmd"と入力しコマンドプロンプトを起動させる。
+            任意のディレクトリに入り、新たに仮想環境を作成するディレクトリを作る。ここではvenvディレクトリにjupyterという仮想環境を作成している。
+            <br>
+        <h1></h1>
+    </section>
+
+    <br>
+
+    <div class="code-box">
+        $ cd C:/ <br>
+        $ mkdir venv <br>
+        $ cd venv <br>
+        $ python -m venv jupyter <br>
+    </div>
+
+
+            {% else %}Download any version of VScode from the following url (https://code.visualstudio.com/)
+            {% endif %}
+        </h1>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="code-box">
+
+        $ cd external/ <br>
+        $ rm -rf wannier90/ <br>
+        $ git clone https://github.com/wannier-developers/wannier90.git wannier90
+
+    </div>
+
+
+    <br>
+    <br>
+
+    <a href="{{ url_for('research', lang=lang) }}" class="cta-button">
+        {% if lang == 'ja' %}研究内容を見る{% else %}Explore Research Projects{% endif %}
+    </a>
+
+{% endblock %}

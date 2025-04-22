@@ -1,0 +1,134 @@
+{% extends "layout.html" %}
+
+{% block title %}ホーム{% endblock %}
+
+{% block content %}
+    <!-- 言語切り替え -->
+    <div class="lang-toggle">
+        <a href="{{ url_for('index', lang='ja') }}">🇯🇵 日本語</a> | 
+        <a href="{{ url_for('index', lang='en') }}">🇬🇧 English</a>
+    </div>
+
+        
+    <div class="sidebar">
+<<<<<<< HEAD
+        <ul>
+=======
+>>>>>>> b52a973 (first commit)
+            <li><a href="#contact">{% if lang == 'ja' %}■連絡先{% else %}■Contact{% endif %}</a></li>
+            <li><a href="#new">{% if lang == 'ja' %}■新着{% else %}■New information{% endif %}</a></li>
+            <li><a href="#page">{% if lang == 'ja' %}■関連ページ一覧{% else %}■Related Pages{% endif %}</a></li>
+            <li><a href="#page">{% if lang == 'ja' %}■合成した結晶の写真{% else %}■Photograph of synthesized crystals{% endif %}</a></li>
+<<<<<<< HEAD
+        </ul>
+=======
+>>>>>>> b52a973 (first commit)
+    </div>
+    
+    <section class="hero">
+        <h1>{% if lang == 'ja' %}東北大学 博士後期課程 藤原千隼のホームページです.{% else %}Homepage of Chihaya Fujiwara, Ph.D. Student in Tohoku Univ.{% endif %}</h1><br>
+    </section>
+
+    <section class="maintext">
+        <h1>{% if lang == 'ja' %}無機材料、特に発光材料の研究開発を実験と第一原理計算の
+            <br>両方の側面から取り組んでおります。{% else %}I am engaged in research and development of inorganic materials, especially luminescent materials, from both experimental and first-principles calculations.{% endif %}</h1><br>
+    </section>
+    
+    <br>
+
+    <section class="main_left_index" id="contact">
+        <h1>{% if lang == 'ja' %}■連絡先{% else %}■Contact{% endif %}</h1>
+    </section>
+    <section class="main_black">
+<<<<<<< HEAD
+        <h1>・fujiwara.chihaya[at]ararara.co.jp</h1>
+=======
+        <h1>・fujiwara.chihaya.p8 [at] dc.tohoku.ac.jp</h1>
+>>>>>>> b52a973 (first commit)
+    </section>
+    
+    <br>
+
+    <section class="main_left_index" id ="new">
+        <h1>{% if lang == 'ja' %}■新着{% else %}■New information{% endif %}</h1>
+    </section>
+    <section class="main_black">
+<<<<<<< HEAD
+        <h1>{% if lang == 'ja' %}・2025/4/1 &emsp;: &emsp; 東北大学博士後期課程に入学しました 
+            {% else %}・2025/4/2 &emsp;: &emsp; Entered Tohoku University Doctoral Program.{% endif %}</h1>
+    </section>
+=======
+        <h1>{% if lang == 'ja' %}・2025/4/21 &emsp;: &emsp; OPTICS & PHOTONICS International Congress 2025で発表しました。 
+            {% else %}・2025/4/21 &emsp;: &emsp; I presented my study OPTICS & PHOTONICS International Congress 2025 {% endif %}</h1>
+        <h1>{% if lang == 'ja' %}・2025/4/11 &emsp;: &emsp; 埼玉大学に出張しました。 
+            {% else %}・2025/4/11 &emsp;: &emsp; I visited Saitama University on a business trip.{% endif %}</h1>
+        <h1>{% if lang == 'ja' %}・2025/4/1 &emsp;: &emsp; 東北大学博士後期課程に入学しました 
+            {% else %}・2025/4/1 &emsp;: &emsp; I joined Yoshikawa lab. at Tohoku University as phd. Student.{% endif %}</h1>
+        </section>
+>>>>>>> b52a973 (first commit)
+
+    <br>
+    
+    <section class="main_left_index" id="Page">
+        <h1>{% if lang == 'ja' %}■関連ページ一覧{% else %}■Related Pages{% endif %}</h1>
+    </section>
+    <section class="main_s">
+        <h1>・This Page  &emsp;: &emsp;<a href="http://localhost:8501/#about-this-tool">http://localhost:8501/#about-this-tool</a></h1>
+        <h1>・Research Map  &emsp;: &emsp; <a href="https://researchmap.jp/C_Fujiwara"> https://researchmap.jp/C_Fujiwara</a> </h1>
+        <h1>・Research Gate  &emsp;: &emsp; <a href="https://www.researchgate.net/profile/Chihaya-Fujiwara"> https://www.researchgate.net/profile/Chihaya-Fujiwara</a></h1>
+        <h1>・Github  &emsp;: &emsp; <a href="https://github.com/Chihaya-Fujiwara"> https://github.com/Chihaya-Fujiwara</a></h1>
+        <h1>・Qitta  &emsp;: &emsp; <a href="https://qiita.com/fch"> https://qiita.com/fch</a></h1>
+    </section>
+
+    <br>
+
+    <section class="main_left_index" id='picture'>
+        <h1>{% if lang == 'ja' %}■合成した結晶の写真{% else %}■Photograph of synthesized crystals{% endif %}</h1>
+    </section>
+    
+    <!-- スライドショー -->
+    <section class="slideshow-container">
+        <div class="slide fade">
+            <img src="{{ url_for('static', filename='images/photo1.jpg') }}" class="slide-image" style="width: 80%; max-height: 300px; object-fit: cover;">
+        </div>
+        <div class="slide fade">
+            <img src="{{ url_for('static', filename='images/photo2.jpg') }}" class="slide-image" style="width: 80%; max-height: 300px; object-fit: cover;">
+        </div>
+        <div class="slide fade">
+            <img src="{{ url_for('static', filename='images/photo3.jpg') }}" class="slide-image" style="width: 80%; max-height: 300px; object-fit: cover;">
+        </div>
+        <div class="slide fade">
+            <img src="{{ url_for('static', filename='images/photo4.jpg') }}" class="slide-image" style="width: 80%; max-height: 300px; object-fit: cover;">
+        </div>
+        <div class="slide fade">
+            <img src="{{ url_for('static', filename='images/photo5.jpg') }}" class="slide-image" style="width: 80%; max-height: 300px; object-fit: cover;">
+        </div>
+
+        
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </section>
+        
+    <a href="{{ url_for('projects', lang=lang) }}" class="cta-button">{% if lang == 'ja' %}研究内容を見る{% else %}Explore Research Projects{% endif %}</a>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            let slides = document.getElementsByClassName("slide");
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex - 1].style.display = "block";
+        }
+
+        setInterval(() => plusSlides(1), 5000);
+    </script>
+{% endblock %}

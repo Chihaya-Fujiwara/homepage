@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+
+
+{% block content %}
+    <!-- 言語切り替え -->
+    <div class="lang-toggle">
+        <a href="{{ url_for('note_first_principles', lang='ja') }}">🇯🇵 日本語</a> |
+        <a href="{{ url_for('note_first_principles', lang='en') }}">🇬🇧 English</a>
+    </div>
+
+    {% include "sidebar.html" %}
+
+    <section class="main_left">
+        <h1>{% if lang == 'ja' %}■Jaaaaaa環境{% else %}■Grantsssssss{% endif %}</h1>
+    </section>
+
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+
+    <a href="{{ url_for('research', lang=lang) }}" class="cta-button">
+        {% if lang == 'ja' %}研究内容を見る{% else %}Explore Research Projects{% endif %}
+    </a>
+
+{% endblock %}
