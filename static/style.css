@@ -298,8 +298,9 @@ ul {
   display: flex;          /* Flexboxを有効にする */
   align-items: baseline;  /* テキストのベースラインを揃える */
   margin-bottom: 0.5em;   /* 各項目の下の余白 */
-  font-size: 1rem;        /* <h1>の代わりにフォントサイズを指定 */
+  font-size: 10px;       /* <h1>の代わりにフォントサイズを指定 */
   font-weight: normal;    /* <h1>の太字をリセット */
+  color: black;           /* 文字色を黒に設定 */
 }
 
 /* 日付部分のスタイル */
