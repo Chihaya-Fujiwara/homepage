@@ -40,30 +40,108 @@
     <section class="main_left_index" id ="new">
         <h1>{% if lang == 'ja' %}■新着{% else %}■New information{% endif %}</h1>
     </section>
-    <section class="main_black">
-        <h1>{% if lang == 'ja' %}・2025/7/1 &emsp;: &emsp; The 12th International Symposium on Radiation Safety and Detection Technology (ISORD-12)で口頭発表を行いました。  
-            {% else %}・2025/6/27 &emsp;: &emsp; I presented my study at The 12th International Symposium on Radiation Safety and Detection Technology (ISORD-12){% endif %}</h1>        
-        <h1>{% if lang == 'ja' %}・2025/7/1 &emsp;: &emsp; 埼玉大学に出張し、ミーティングを行いました。  
-            {% else %}・2025/6/27 &emsp;: &emsp; I visited Saitama University and have the meeting.{% endif %}</h1>        
-        <h1>{% if lang == 'ja' %}・2025/6/24 &emsp;: &emsp; Symposium on Optical Materials and its Measurements in UVSOR(SOMU2025)で口頭発表を行いました。  
-            {% else %}・2025/6/24 &emsp;: &emsp; I presented my study at  Symposium on Optical Materials and its Measurements inUVSOR(SOMU2025).{% endif %}</h1>        
-        <h1>{% if lang == 'ja' %}・2025/6/11 &emsp;: &emsp; 産業技術総合研究所,60Co照射施設に出張し、実験をしました。  
-            {% else %}・2025/6/11 &emsp;: &emsp; I visited the 60Co irradiation facility at the National Institute of Advanced Industrial Science and Technology (AIST) to conduct experiments.{% endif %}</h1>        
-        <h1>{% if lang == 'ja' %}・2025/5/28 &emsp;: &emsp; 埼玉大学に出張しました。  
-            {% else %}・2025/5/30 &emsp;: &emsp; I visited Saitama University on a business trip.  {% endif %}</h1>        
-        <h1>{% if lang == 'ja' %}・2025/5/28 &emsp;: &emsp; 東北大学 金属材料研究所講演会でポスターを発表いたしました。 (https://www.imr.tohoku.ac.jp/kouenkai/reports/148.html)。  
-            {% else %}・2025/5/28 &emsp;: &emsp; I presented a poster at the lecture meeting of Institute for Materials Research, Tohoku University (https://www.imr.tohoku.ac.jp/kouenkai/reports/148.html).  {% endif %}</h1>        
-        <h1>{% if lang == 'ja' %}・2025/5/14 &emsp;: &emsp; 埼玉大学小玉グループの学生と共同で実験および解析を行いました。  
-            {% else %}・2025/5/14 &emsp;: &emsp; Experiments and data analysis were carried out in collaboration with students from the Kodama Group at Saitama University. {% endif %}</h1>        
-        <h1>{% if lang == 'ja' %}・2025/5/13 &emsp;: &emsp; Institute for Nuclear Research (ATOMKI)からMátyás先生とLóránt先生が来訪され研究会を行いました。 
-            {% else %}・2025/5/13 &emsp;: &emsp; Professors Mátyás and Lóránt from the Institute for Nuclear Research (ATOMKI) visited us and jointly held a research seminar with our team {% endif %}</h1>        
-        <h1>{% if lang == 'ja' %}・2025/4/21 &emsp;: &emsp; OPTICS & PHOTONICS International Congress 2025で発表しました。 
-            {% else %}・2025/4/21 &emsp;: &emsp; I presented my study at OPTICS & PHOTONICS International Congress 2025 {% endif %}</h1>
-        <h1>{% if lang == 'ja' %}・2025/4/11 &emsp;: &emsp; 埼玉大学に出張しました。 
-            {% else %}・2025/4/11 &emsp;: &emsp; I visited Saitama University on a business trip.{% endif %}</h1>
-        <h1>{% if lang == 'ja' %}・2025/4/1 &emsp;: &emsp; 東北大学博士後期課程に入学しました 
-            {% else %}・2025/4/1 &emsp;: &emsp; I joined Yoshikawa lab. at Tohoku University as phd. Student.{% endif %}</h1>
-        </section>
+
+    <div class="news-list">
+        <p class="news-item">
+            {% if lang == 'ja' %}
+                <span class="date">・2025/7/1 :</span>
+                <span class="description">The 12th International Symposium on Radiation Safety and Detection Technology (ISORD-12)で口頭発表を行いました。</span>
+            {% else %}
+                <span class="date">・2025/6/27 :</span>
+                <span class="description">I presented my study at The 12th International Symposium on Radiation Safety and Detection Technology (ISORD-12)</span>
+            {% endif %}
+        </p>
+        <p class="news-item">
+            {% if lang == 'ja' %}
+                <span class="date">・2025/7/1 :</span>
+                <span class="description">埼玉大学に出張し、ミーティングを行いました。</span>
+            {% else %}
+                <span class="date">・2025/6/27 :</span>
+                <span class="description">I visited Saitama University and have the meeting.</span>
+            {% endif %}
+        </p>
+        <p class="news-item">
+            {% if lang == 'ja' %}
+                <span class="date">・2025/6/24 :</span>
+                <span class="description">Symposium on Optical Materials and its Measurements in UVSOR(SOMU2025)で口頭発表を行いました。</span>
+            {% else %}
+                <span class="date">・2025/6/24 :</span>
+                <span class="description">I presented my study at Symposium on Optical Materials and its Measurements inUVSOR(SOMU2025).</span>
+            {% endif %}
+        </p>
+        <p class="news-item">
+            {% if lang == 'ja' %}
+                <span class="date">・2025/6/11 :</span>
+                <span class="description">産業技術総合研究所,60Co照射施設に出張し、実験をしました。</span>
+            {% else %}
+                <span class="date">・2025/6/11 :</span>
+                <span class="description">I visited the 60Co irradiation facility at the National Institute of Advanced Industrial Science and Technology (AIST) to conduct experiments.</span>
+            {% endif %}
+        </p>
+        <p class="news-item">
+            {% if lang == 'ja' %}
+                <span class="date">・2025/5/28 :</span>
+                <span class="description">埼玉大学に出張しました。</span>
+            {% else %}
+                <span class="date">・2025/5/30 :</span>
+                <span class="description">I visited Saitama University on a business trip.</span>
+            {% endif %}
+        </p>
+        <p class="news-item">
+            {% if lang == 'ja' %}
+                <span class="date">・2025/5/28 :</span>
+                <span class="description">東北大学 金属材料研究所講演会でポスターを発表いたしました。(https://www.imr.tohoku.ac.jp/kouenkai/reports/148.html)。</span>
+            {% else %}
+                <span class="date">・2025/5/28 :</span>
+                <span class="description">I presented a poster at the lecture meeting of Institute for Materials Research, Tohoku University (https://www.imr.tohoku.ac.jp/kouenkai/reports/148.html).</span>
+            {% endif %}
+        </p>
+        <p class="news-item">
+            {% if lang == 'ja' %}
+                <span class="date">・2025/5/14 :</span>
+                <span class="description">埼玉大学小玉グループの学生と共同で実験および解析を行いました。</span>
+            {% else %}
+                <span class="date">・2025/5/14 :</span>
+                <span class="description">Experiments and data analysis were carried out in collaboration with students from the Kodama Group at Saitama University.</span>
+            {% endif %}
+        </p>
+        <p class="news-item">
+            {% if lang == 'ja' %}
+                <span class="date">・2025/5/13 :</span>
+                <span class="description">Institute for Nuclear Research (ATOMKI)からMátyás先生とLóránt先生が来訪され研究会を行いました。</span>
+            {% else %}
+                <span class="date">・2025/5/13 :</span>
+                <span class="description">Professors Mátyás and Lóránt from the Institute for Nuclear Research (ATOMKI) visited us and jointly held a research seminar with our team.</span>
+            {% endif %}
+        </p>
+        <p class="news-item">
+            {% if lang == 'ja' %}
+                <span class="date">・2025/4/21 :</span>
+                <span class="description">OPTICS & PHOTONICS International Congress 2025で発表しました。</span>
+            {% else %}
+                <span class="date">・2025/4/21 :</span>
+                <span class="description">I presented my study at OPTICS & PHOTONICS International Congress 2025.</span>
+            {% endif %}
+        </p>
+        <p class="news-item">
+            {% if lang == 'ja' %}
+                <span class="date">・2025/4/11 :</span>
+                <span class="description">埼玉大学に出張しました。</span>
+            {% else %}
+                <span class="date">・2025/4/11 :</span>
+                <span class="description">I visited Saitama University on a business trip.</span>
+            {% endif %}
+        </p>
+        <p class="news-item">
+            {% if lang == 'ja' %}
+                <span class="date">・2025/4/1 :</span>
+                <span class="description">東北大学博士後期課程に入学しました</span>
+            {% else %}
+                <span class="date">・2025/4/1 :</span>
+                <span class="description">I joined Yoshikawa lab. at Tohoku University as phd. Student.</span>
+            {% endif %}
+        </p>
+    </div>
 
     <br>
     

@@ -286,3 +286,29 @@ ul {
     border-radius: 5px;
     margin-left: 0;  /* 左寄せ */
 }
+
+
+/* お知らせやニュースのリスト全体のスタイル */
+.news-list {
+  padding-left: 0; /* 左の余白をリセット */
+}
+
+/* 各リスト項目のスタイル */
+.news-item {
+  display: flex;          /* Flexboxを有効にする */
+  align-items: baseline;  /* テキストのベースラインを揃える */
+  margin-bottom: 0.5em;   /* 各項目の下の余白 */
+  font-size: 1rem;        /* <h1>の代わりにフォントサイズを指定 */
+  font-weight: normal;    /* <h1>の太字をリセット */
+}
+
+/* 日付部分のスタイル */
+.news-item .date {
+  flex-shrink: 0;     /* 日付部分が縮まないようにする */
+  width: 130px;       /* 日付部分の幅を固定（必要に応じて調整してください） */
+}
+
+/* 説明部分のスタイル */
+.news-item .description {
+  /* ここに説明文用のスタイルを追加できます */
+}
