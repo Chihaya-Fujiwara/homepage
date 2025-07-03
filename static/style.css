@@ -298,10 +298,11 @@ ul {
   display: flex;          /* Flexboxを有効にする */
   align-items: baseline;  /* テキストのベースラインを揃える */
   margin-bottom: 0.5em;   /* 各項目の下の余白 */
-  font-size: 0.8rem;        /* <h1>の代わりにフォントサイズを指定 */
+  font-size: 0.9rem;        /* <h1>の代わりにフォントサイズを指定 */
   font-weight: normal;    /* <h1>の太字をリセット */
   color: black;           /* 文字色を黒に設定 */
   font-family: 'Poppins', sans-serif;
+  font-weight: bold;
 }
 
 /* 日付部分のスタイル */
