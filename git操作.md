@@ -1,4 +1,4 @@
-git 
+it git 
 git init
 git add -A (#追加)
 git commit -m "first commit"
