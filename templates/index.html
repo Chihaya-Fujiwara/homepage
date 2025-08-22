@@ -23,7 +23,7 @@
     </section>
 
     <section class="maintext">
-        <h1>{% if lang == 'ja' %}無機材料、特に発光材料の研究に取り組んでおります。{% else %}I am engaged in research and development of inorganic materials, especially luminescent materials.{% endif %}</h1><br>
+        <h1>{% if lang == 'ja' %}無機材料、特に発光材料の研究に取り組んでおります。{% else %} I am engaged in research and development of inorganic materials, especially luminescent materials.{% endif %}</h1><br>
     </section>
     
     <br>
@@ -42,6 +42,16 @@
     </section>
 
     <div class="news-list">
+
+        <p class="news-item">
+            {% if lang == 'ja' %}
+                <span class="date">・2025/8/20-21 :</span>
+                <span class="description">京都大学複合原子力科学研究所で実験を行いました。</span>
+            {% else %}
+                <span class="date">・2025/8/20-21 :</span>
+                <span class="description">We conducted an experiment at the Institute for Integrated Radiation and Nuclear Science, Kyoto University.</span>
+            {% endif %}
+        </p>
 
         <p class="news-item">
             {% if lang == 'ja' %}
