@@ -315,3 +315,71 @@ ul {
 .news-item .description {
   /* ここに説明文用のスタイルを追加できます */
 }
+
+/* =============================================== */
+/* スマートフォン向けのスタイル（ここから追記） */
+/* 画面幅が768px以下の場合に適用されます */
+/* =============================================== */
+@media (max-width: 768px) {
+
+    /* --- 1. サイドバーの固定表示を解除 --- */
+    .sidebar {
+        position: static;   /* fixed（固定）をやめて、通常の要素と同じように配置 */
+        width: 100%;        /* 横幅を画面いっぱいに */
+        left: auto;         /* 位置指定をリセット */
+        top: auto;          /* 位置指定をリセット */
+        padding: 10px 20px; /* 内側の余白を調整 */
+        box-sizing: border-box; /* paddingを含めてwidth:100%にする */
+    }
+
+    /* --- 2. メインコンテンツと全体のレイアウト調整 --- */
+    main {
+        margin-top: 80px;   /* 固定ナビゲーションバーの高さ分、コンテンツを下げる */
+        padding: 15px;      /* スマホ用に余白を調整 */
+        max-width: 100%;    /* PC用の最大幅指定をリセット */
+    }
+
+    .navbar {
+        width: 100%;        /* 横幅を画面ぴったりに */
+        box-sizing: border-box;
+    }
+
+    /* ナビゲーションのリンクが多すぎる場合、折り返すかメニューにする検討も必要 */
+    .navbar ul {
+        flex-wrap: wrap; /* リンクが多い場合に折り返す */
+        justify-content: center;
+    }
+
+    /* --- 3. 文字サイズの調整 --- */
+    /* 小さすぎる文字を読みやすい大きさに */
+    .alltext, .main_s, .main_black {
+        font-size: 14px; /* 9pxは小さすぎるので、最低でも14px程度に */
+    }
+
+    .caption {
+        font-size: 12px; /* 8pxは小さすぎるので調整 */
+    }
+    
+    /* --- 4. その他の要素の調整 --- */
+    .slideshow-container {
+        max-width: 95%;     /* スライドショーの幅を画面幅に近づける */
+    }
+
+    .main_s {
+        text-indent: 2em;   /* インデント（字下げ）をスマホ用に浅くする */
+    }
+
+    .code-box {
+        padding-right: 1em; /* コードブロックの余白を調整 */
+    }
+
+    .news-item {
+        flex-direction: column; /* 日付と内容を縦積みにする */
+        align-items: flex-start; /* 左寄せに揃える */
+    }
+
+    .news-item .date {
+        width: auto; /* 日付の幅を自動に */
+        margin-bottom: 5px; /* 日付と内容の間に余白 */
+    }
+}
