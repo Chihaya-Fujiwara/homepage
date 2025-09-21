@@ -329,14 +329,49 @@
         <h1>{% if lang == 'ja' %}■関連ページ一覧{% else %}■Related Pages{% endif %}</h1>
     </section>
     
-    <section class="news-item">
-        <h1>・This Page  &emsp;: &emsp;<a href="https://fujiwara-chihaya.jp">https://fujiwara-chihaya.jp</a></h1>
-        <h1>・Research Map  &emsp;: &emsp; <a href="https://researchmap.jp/C_Fujiwara"> https://researchmap.jp/C_Fujiwara</a> </h1>
-        <h1>・Research Gate  &emsp;: &emsp; <a href="https://www.researchgate.net/profile/Chihaya-Fujiwara"> https://www.researchgate.net/profile/Chihaya-Fujiwara</a></h1>
-        <h1>・Github  &emsp;: &emsp; <a href="https://github.com/Chihaya-Fujiwara"> https://github.com/Chihaya-Fujiwara</a></h1>
-        <h1>・Qitta  &emsp;: &emsp; <a href="https://qiita.com/fch"> https://qiita.com/fch</a></h1>
-    </section>
+    <div class="news-list">
+        <p class="news-item">
+            {% if lang == 'ja' %}
+                <span class="description">・This Page  &emsp;: &emsp;<a href="https://fujiwara-chihaya.jp">https://fujiwara-chihaya.jp</span>
+            {% else %}
+                <span class="description">・This Page  &emsp;: &emsp;<a href="https://fujiwara-chihaya.jp">https://fujiwara-chihaya.jp</span>
+            {% endif %}
+        </p>
+      
+        <p class="news-item">
+            {% if lang == 'ja' %}
+                <span class="description">・Research Map  &emsp;: &emsp; <a href="https://researchmap.jp/C_Fujiwara"> https://researchmap.jp/C_Fujiwara</span>
+            {% else %}
+                <span class="description">・Research Map  &emsp;: &emsp; <a href="https://researchmap.jp/C_Fujiwara"> https://researchmap.jp/C_Fujiwara</span>
+            {% endif %}
+        </p>
 
+        <p class="news-item">
+            {% if lang == 'ja' %}
+                <span class="description">・Research Gate  &emsp;: &emsp; <a href="https://www.researchgate.net/profile/Chihaya-Fujiwara"> https://www.researchgate.net/profile/Chihaya-Fujiwara</span>
+            {% else %}
+                <span class="description">・Research Gate  &emsp;: &emsp; <a href="https://www.researchgate.net/profile/Chihaya-Fujiwara"> https://www.researchgate.net/profile/Chihaya-Fujiwara</span>
+            {% endif %}
+        </p>
+
+        <p class="news-item">
+            {% if lang == 'ja' %}
+                <span class="description">・Github  &emsp;: &emsp; <a href="https://github.com/Chihaya-Fujiwara"> https://github.com/Chihaya-Fujiwara</span>
+            {% else %}
+                <span class="description">・Github  &emsp;: &emsp; <a href="https://github.com/Chihaya-Fujiwara"> https://github.com/Chihaya-Fujiwara</span>
+            {% endif %}
+        </p>
+
+        <p class="news-item">
+            {% if lang == 'ja' %}
+                <span class="description">・Qitta  &emsp;: &emsp; <a href="https://qiita.com/fch"> https://qiita.com/fch</span>
+            {% else %}
+                <span class="description">・Qitta  &emsp;: &emsp; <a href="https://qiita.com/fch"> https://qiita.com/fch</span>
+            {% endif %}
+        </p>
+        
+    </div>
+    
     <br>
 
     <section class="main_left_index" id='picture'>
