@@ -42,14 +42,23 @@
     </section>
 
     <div class="news-list">
-
+        
+        <p class="news-item">
+            {% if lang == 'ja' %}
+                <span class="date">・2025/12/31 :</span>
+                <span class="description">We are pleased to announce that our latest research on novel scintillators has been published in Materials Today Physics (https://www.sciencedirect.com/science/article/pii/S2542529325003530?via%3Dihub#bfn1).</span>
+            {% else %}
+                <span class="date">・2025/12/31 :</span>
+                <span class="description">We are pleased to announce that our latest research on novel scintillators has been published in Materials Today Physics (https://www.sciencedirect.com/science/article/pii/S2542529325003530?via%3Dihub#bfn1).</span>
+            {% endif %}
+        </p>
 
         <p class="news-item">
             {% if lang == 'ja' %}
-                <span class="date">・2025/7/25 :</span>
+                <span class="date">・2025/12/26 :</span>
                 <span class="description">🎤科学研究費助成事業・学術変革領域研究（B）「STED 技術による生物と無生物をつなぐメゾスケール現象の動的解明」の第3回領域会議で口頭発表を行いました。</span>
             {% else %}
-                <span class="date">・2025/7/25 :</span>
+                <span class="date">・2025/12/26 :</span>
                 <span class="description">🎤I presented my research at the 3rd Annual Meeting of the KAKENHI Grant-in-Aid for Transformative Research Areas (B): "Dynamic Elucidation of Mesoscale Phenomena Linking Biotic and Abiotic Matter by STED Technology."</span>
             {% endif %}
         </p>
