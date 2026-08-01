@@ -18,12 +18,25 @@
             <li><a href="#page">{% if lang == 'ja' %}■合成した結晶の写真{% else %}■Photograph of synthesized crystals{% endif %}</a></li>
     </div>
     
-    <section class="hero">
-        <h1>{% if lang == 'ja' %}東北大学 博士後期課程 藤原千隼のホームページです.{% else %}Homepage of Chihaya Fujiwara, Ph.D. Student in Tohoku Univ.{% endif %}</h1><br>
+
+    
+    <section class="page-top">
+        <img src="{{ url_for('static', filename='fig/top.jpg') }}" 
+             alt="Top image" 
+             class="page-top__img">
     </section>
 
+    <section class="hero">
+        <h1>{% if lang == 'ja' %}名古屋大学 工学研究科 エネルギー理工学専攻 <br> 量子線写像工学研究グループ (X研) <br> 藤原千隼のホームページです.{% else %}Homepage of Chihaya Fujiwara, in Nagoya Univ.{% endif %}</h1><br>
+    </section>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
     <section class="maintext">
-        <h1>{% if lang == 'ja' %}無機材料、特に発光材料の研究に取り組んでおります。{% else %} I am engaged in research and development of inorganic materials, especially luminescent materials.{% endif %}</h1><br>
+        <h1>{% if lang == 'ja' %}研究分野は光学材料を主軸とし、ハライドペロブスカイトを含めた発光材料を実験的および計算科学の側面から研究を進めております。{% else %} I am engaged in research and development of inorganic materials, especially luminescent materials.{% endif %}</h1><br>
     </section>
     
     <br>
@@ -32,443 +45,11 @@
         <h1>{% if lang == 'ja' %}■連絡先{% else %}■Contact{% endif %}</h1>
     </section>
     <section class="main_black">
-        <h1>・fujiwara.chihaya.p8 [at] dc.tohoku.ac.jp</h1>
+        <h1>・fujiwara.chihaya.e1 [at] s.mail.nagoya-u.ac.jp</h1>
     </section>
     
     <br>
 
-    <section class="main_left_index" id ="new">
-        <h1>{% if lang == 'ja' %}■新着{% else %}■New information{% endif %}</h1>
-    </section>
-
-    <div class="news-list">
-        
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/12/31 :</span>
-                <span class="description">We are pleased to announce that our latest research on novel scintillators has been published in Materials Today Physics (https://www.sciencedirect.com/science/article/pii/S2542529325003530?via%3Dihub#bfn1).</span>
-            {% else %}
-                <span class="date">・2025/12/31 :</span>
-                <span class="description">We are pleased to announce that our latest research on novel scintillators has been published in Materials Today Physics (https://www.sciencedirect.com/science/article/pii/S2542529325003530?via%3Dihub#bfn1).</span>
-            {% endif %}
-        </p>
-
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/12/26 :</span>
-                <span class="description">🎤科学研究費助成事業・学術変革領域研究（B）「STED 技術による生物と無生物をつなぐメゾスケール現象の動的解明」の第3回領域会議で口頭発表を行いました。</span>
-            {% else %}
-                <span class="date">・2025/12/26 :</span>
-                <span class="description">🎤I presented my research at the 3rd Annual Meeting of the KAKENHI Grant-in-Aid for Transformative Research Areas (B): "Dynamic Elucidation of Mesoscale Phenomena Linking Biotic and Abiotic Matter by STED Technology."</span>
-            {% endif %}
-        </p>
-
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/12/19:</span>
-                <span class="description">🧪近畿大学、研究用原子炉で中性子検出実験を行いました。</span>
-            {% else %}
-                <span class="date">・2025/12/19 :</span>
-                <span class="description">🧪I carried out neutron detection experiments at the Kindai University research reactor (UTR-KINKI).</span>
-            {% endif %}
-        </p>
-
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/12/10:</span>
-                <span class="description">🧪東北大学,加田准教授の研究室に訪問しで中性子検出実験を行いました。</span>
-            {% else %}
-                <span class="date">・2025/12/10 :</span>
-                <span class="description">🧪I carried out neutron detection experiments at the laboratory of Professor Wataru Kada, Tohoku University.</span>
-            {% endif %}
-        </p>
-
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/11/26-29 :</span>
-                <span class="description">🧪分子科学研究所,極端紫外光研究施設で発光特性の温度依存性を測定しました。</span>
-            {% else %}
-                <span class="date">・2025/11/26-29 :</span>
-                <span class="description">🧪We measured the temperature dependence of luminescence properties at the Extreme Ultraviolet Light Research Facility, Molecular Science Laboratory.</span>
-            {% endif %}
-        </p>
-
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/11/21-22 :</span>
-                <span class="description">🧪京都大学複合原子力科学研究所で実験を行いました。</span>
-            {% else %}
-                <span class="date">・2025/11/21-22 :</span>
-                <span class="description">🧪We conducted an experiment at the Institute for Integrated Radiation and Nuclear Science, Kyoto University.</span>
-            {% endif %}
-        </p>
-
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/11/13 :</span>
-                <span class="description">🏆 第86回応用物理学会秋季学術講演会での口頭発表が"講演奨励賞"に選ばれました (https://www.jsap.or.jp/young-scientist-presentation-award/recipients59)。</span>
-            {% else %}
-                <span class="date">・2025/11/13 :</span>
-                <span class="description">🏆 I received the "the Young Scientist Presentation Award" at the 86th JSAP Autumn Meeting (https://www.jsap.or.jp/young-scientist-presentation-award/recipients59)."</span>
-            {% endif %}
-        </p>
-
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/11/7 :</span>
-                <span class="description">🏆 2025 IEEE NSS MIC RTSDでの口頭発表が"First Place, Student Paper Award, Oral Presentation"に選ばれました。</span>
-            {% else %}
-                <span class="date">・2025/11/7 :</span>
-                <span class="description">🏆 I received the "First Place, Student Paper Award, Oral Presentation" at 2025 IEEE NSS MIC RTSD."</span>
-            {% endif %}
-        </p>
-
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/11/1-8 :</span>
-                <span class="description">🎤放射線計測分野における最大の国際会議である2025 IEEE NSS MIC RTSDに参加し、口頭発表を行いました。</span>
-            {% else %}
-                <span class="date">・2025/11/1-8:</span>
-                <span class="description">🎤I gave an oral presentation at the 2025 IEEE NSS MIC RTSD, the largest international conference dedicated to radiation measurement and imaging.</span>
-            {% endif %}
-        </p>
-
-
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/10/30 :</span>
-                <span class="description">🎤UVSORシンポジウムに参加し、口頭発表を行いました。</span>
-            {% else %}
-                <span class="date">・2025/10/30:</span>
-                <span class="description">🎤I gave a poster presentation at The UVSOR Symposium.</span>
-            {% endif %}
-        </p>
-
-
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/10/21-22 :</span>
-                <span class="description">🧪京都大学複合原子力科学研究所で実験を行いました。</span>
-            {% else %}
-                <span class="date">・2025/10/21-22 :</span>
-                <span class="description">🧪We conducted an experiment at the Institute for Integrated Radiation and Nuclear Science, Kyoto University.</span>
-            {% endif %}
-        </p>
-
-
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/10/20 :</span>
-                <span class="description">🎤第45回電子材料研究討論会に参加し、口頭発表を行いました。</span>
-            {% else %}
-                <span class="date">・2025/10/20:</span>
-                <span class="description">🎤I gave an oral presentation at The 45th Electronic Materials Research Symposium.</span>
-            {% endif %}
-        </p>
-
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/10/13-17 :</span>
-                <span class="description">🧪分子科学研究所,極端紫外光研究施設で発光特性の温度依存性を測定しました。</span>
-            {% else %}
-                <span class="date">・2025/10/13-17 :</span>
-                <span class="description">🧪We measured the temperature dependence of luminescence properties at the Extreme Ultraviolet Light Research Facility, Molecular Science Laboratory.</span>
-            {% endif %}
-        </p>
-
-        
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/9/23 :</span>
-                <span class="description">🧪京都大学複合原子力科学研究所で実験を行いました。</span>
-            {% else %}
-                <span class="date">・2025/9/23 :</span>
-                <span class="description">🧪We conducted an experiment at the Institute for Integrated Radiation and Nuclear Science, Kyoto University.</span>
-            {% endif %}
-        </p>
-        
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/9/17-19 :</span>
-                <span class="description">🎤群馬大学で行われた、セラミックス協会第38回秋季シンポジウム、元素・構造多様性に基づく無機化合物の物質科学のセッションにて口頭発表を行いました。</span>
-            {% else %}
-                <span class="date">・2025/9/17-19 :</span>
-                <span class="description">🎤I gave an oral presentation at the 38th Fall Meeting of the Ceramic Society of Japan (CerSJ), held at Gunma University.</span>
-            {% endif %}
-        </p>
-
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/9/16 :</span>
-                <span class="description">🧪京都大学複合原子力科学研究所で実験を行いました。</span>
-            {% else %}
-                <span class="date">・2025/9/16 :</span>
-                <span class="description">🧪We conducted an experiment at the Institute for Integrated Radiation and Nuclear Science, Kyoto University.</span>
-            {% endif %}
-        </p>
-
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/9/12 :</span>
-                <span class="description">🧪東京科学大学、コバルト60施設で実験を行いました。</span>
-            {% else %}
-                <span class="date">・2025/9/12 :</span>
-                <span class="description">🧪We conducted an experiment at the Cobalt-60 facility of the Institute of Science Tokyo.</span>
-            {% endif %}
-        </p>
-        
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/9/6-10 :</span>
-                <span class="description">🎤応用物理学会に参加し、半導体/光物性のセッションで口頭発表を行いました。</span>
-            {% else %}
-                <span class="date">・2025/9/6-10:</span>
-                <span class="description">🎤I gave an oral presentation in the "Semiconductor / Optical Properties" session at the 86th JSAP Autumn 2025 meeting.</span>
-            {% endif %}
-        </p>
-        
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/9/2-5 :</span>
-                <span class="description">🧪共同研究の一環でInstitute for Nuclear Research, Hungarian Academy of Sciencesに出張し、粒子線検出実験を行いました。</span>
-            {% else %}
-                <span class="date">・2025/9/2-5:</span>
-                <span class="description">🧪As part of a research collaboration, I visited the Institute for Nuclear Research, Hungarian Academy of Sciences to conduct a particle beam detection experiment.</span>
-            {% endif %}
-        </p>
-
-        <div>
-            <img src="{{ url_for('static', filename='fig/atomiki.jpg') }}"  style="width: 50%; max-height: 1000px; object-fit: cover; display: block; margin: auto;">
-        </div>
-
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/8/29 :</span>
-                <span class="description">🎤千葉大学で行われた、ヨウ素学会シンポジウムに参加し、口頭発表を行いました。</span>
-            {% else %}
-                <span class="date">・2025/8/29 :</span>
-                <span class="description">🎤I had oral presentation at the 28th SIS Symposium</span>
-            {% endif %}
-        </p>
-
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/8/28 :</span>
-                <span class="description">🏆 International Conference on Excited States of Transition Elements (ESTE2025)でのポスター発表がBest poster Distinctionに選ばれました。</span>
-            {% else %}
-                <span class="date">・2025/8/28 :</span>
-                <span class="description">🏆 I received the Best poseter Distinction at the International Conference on Excited States of Transition Elements (ESTE2025)."</span>
-            {% endif %}
-        </p>
-
-        <div>
-            <img src="{{ url_for('static', filename='fig/este_2.png') }}"  style="width: 30%; max-height: 1000px; object-fit: cover; display: block; margin: auto;">
-        </div>
-
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/8/23-27 :</span>
-                <span class="description">🎤ポーランドのブロツワフで行われた、International Conference on Excited States of Transition Elements (ESTE2025)に参加し、口頭発表およびポスター発表の2件を行いました。</span>
-            {% else %}
-                <span class="date">・2025/8/23-27 :</span>
-                <span class="description">🎤I had oral and psoter presentation at International Conference on Excited States of Transition Elements (ESTE2025)</span>
-            {% endif %}
-        </p>
-
-        <div>
-            <img src="{{ url_for('static', filename='fig/este.jpg') }}"  style="width: 60%; max-height: 1000px; object-fit: cover; display: block; margin: auto;">
-        </div>
-
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/8/20-21 :</span>
-                <span class="description">🧪京都大学複合原子力科学研究所で実験を行いました。</span>
-            {% else %}
-                <span class="date">・2025/8/20-21 :</span>
-                <span class="description">🧪We conducted an experiment at the Institute for Integrated Radiation and Nuclear Science, Kyoto University.</span>
-            {% endif %}
-        </p>
-
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/8/11-13 :</span>
-                <span class="description">🎤次世代放射線シンポジウム2025に参加しポスター発表を行いました。</span>
-            {% else %}
-                <span class="date">・2025/8/11-13 :</span>
-                <span class="description">🎤I presented a poster at the Next-Generation Radiation Symposium 2025.</span>
-            {% endif %}
-        </p>
-
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/8/5 :</span>
-                <span class="description">🎤西安で行われた21st International Conference on Crystal Growth and Epitaxy (ICCGE-21)に参加し、口頭発表を行いました。</span>
-            {% else %}
-                <span class="date">・2025/8/5 :</span>
-                <span class="description">🎤I had an oral presentation at the 21st International Conference on Crystal Growth and Epitaxy (ICCGE-21) in Xi'an.</span>
-            {% endif %}
-        </p>
-
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/8/1 :</span>
-                <span class="description">🧪東京科学大学、コバルト60施設で実験を行いました。</span>
-            {% else %}
-                <span class="date">・2025/8/1 :</span>
-                <span class="description">🧪We conducted an experiment at the Cobalt-60 facility of the Institute of Science Tokyo.</span>
-            {% endif %}
-        </p>
-
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/7/25 :</span>
-                <span class="description">🏆 科学研究費助成事業・学術変革領域研究（B）「STED 技術による生物と無生物をつなぐメゾスケール現象の動的解明」の第3回領域会議で優秀発表賞を受賞しました。</span>
-            {% else %}
-                <span class="date">・2025/7/25 :</span>
-                <span class="description">🏆 I received the Excellent Presentation Award at the 3rd Annual Meeting of the KAKENHI Grant-in-Aid for Transformative Research Areas (B): "Dynamic Elucidation of Mesoscale Phenomena Linking Biotic and Abiotic Matter by STED Technology."</span>
-            {% endif %}
-        </p>
-
-        <div>
-            <img src="{{ url_for('static', filename='fig/sted.jpg') }}"  style="width: 30%; max-height: 1000px; object-fit: cover; display: block; margin: auto;">
-        </div>
-
-
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/7/25 :</span>
-                <span class="description">🎤科学研究費助成事業・学術変革領域研究（B）「STED 技術による生物と無生物をつなぐメゾスケール現象の動的解明」の第3回領域会議で口頭発表を行いました。</span>
-            {% else %}
-                <span class="date">・2025/7/25 :</span>
-                <span class="description">🎤I presented my research at the 3rd Annual Meeting of the KAKENHI Grant-in-Aid for Transformative Research Areas (B): "Dynamic Elucidation of Mesoscale Phenomena Linking Biotic and Abiotic Matter by STED Technology."</span>
-            {% endif %}
-        </p>
-
-
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/7/18 :</span>
-                <span class="description">公益財団法人東電記念財団2025年度国際技術交流援助に採択されました。</span>
-            {% else %}
-                <span class="date">・2025/7/18 :</span>
-                <span class="description">I have been selected for the 2025 International Technical Exchange Assistance Program of the Tokyo Electric Power Memorial Foundation.</span>
-            {% endif %}
-        </p>
-        
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/7/15-18 :</span>
-                <span class="description">🧪分子科学研究所,極端紫外光研究施設で発光特性の温度依存性を測定しました。</span>
-            {% else %}
-                <span class="date">・2025/7/15-18 :</span>
-                <span class="description">🧪We measured the temperature dependence of luminescence properties at the Extreme Ultraviolet Light Research Facility, Molecular Science Laboratory.</span>
-            {% endif %}
-        </p>
-
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/7/1 :</span>
-                <span class="description">🎤The 12th International Symposium on Radiation Safety and Detection Technology (ISORD-12)で口頭発表を行いました。</span>
-            {% else %}
-                <span class="date">・2025/7/1 :</span>
-                <span class="description">🎤I presented my study at The 12th International Symposium on Radiation Safety and Detection Technology (ISORD-12)</span>
-            {% endif %}
-        </p>
-        
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/6/27 :</span>
-                <span class="description">埼玉大学に出張し、ミーティングを行いました。</span>
-            {% else %}
-                <span class="date">・2025/6/27 :</span>
-                <span class="description">I visited Saitama University and had a meeting.</span>
-            {% endif %}
-        </p>
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/6/24 :</span>
-                <span class="description">Symposium on Optical Materials and its Measurements in UVSOR(SOMU2025)で口頭発表を行いました。</span>
-            {% else %}
-                <span class="date">・2025/6/24 :</span>
-                <span class="description">I presented my study at Symposium on Optical Materials and its Measurements inUVSOR(SOMU2025).</span>
-            {% endif %}
-        </p>
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/6/11 :</span>
-                <span class="description">産業技術総合研究所,60Co照射施設に出張し、実験をしました。</span>
-            {% else %}
-                <span class="date">・2025/6/11 :</span>
-                <span class="description">I visited the 60Co irradiation facility at the National Institute of Advanced Industrial Science and Technology (AIST) to conduct experiments.</span>
-            {% endif %}
-        </p>
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/5/28 :</span>
-                <span class="description">埼玉大学に出張しました。</span>
-            {% else %}
-                <span class="date">・2025/5/30 :</span>
-                <span class="description">I visited Saitama University on a business trip.</span>
-            {% endif %}
-        </p>
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/5/28 :</span>
-                <span class="description">東北大学 金属材料研究所講演会でポスターを発表いたしました。(https://www.imr.tohoku.ac.jp/kouenkai/reports/148.html)。</span>
-            {% else %}
-                <span class="date">・2025/5/28 :</span>
-                <span class="description">I presented a poster at the lecture meeting of Institute for Materials Research, Tohoku University (https://www.imr.tohoku.ac.jp/kouenkai/reports/148.html).</span>
-            {% endif %}
-        </p>
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/5/14 :</span>
-                <span class="description">埼玉大学小玉グループの学生と共同で実験および解析を行いました。</span>
-            {% else %}
-                <span class="date">・2025/5/14 :</span>
-                <span class="description">Experiments and data analysis were carried out in collaboration with students from the Kodama Group at Saitama University.</span>
-            {% endif %}
-        </p>
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/5/13 :</span>
-                <span class="description">Institute for Nuclear Research (ATOMKI)からMátyás先生とLóránt先生が来訪され研究会を行いました。</span>
-            {% else %}
-                <span class="date">・2025/5/13 :</span>
-                <span class="description">Professors Mátyás and Lóránt from the Institute for Nuclear Research (ATOMKI) visited us and jointly held a research seminar with our team.</span>
-            {% endif %}
-        </p>
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/4/21 :</span>
-                <span class="description">OPTICS & PHOTONICS International Congress 2025で発表しました。</span>
-            {% else %}
-                <span class="date">・2025/4/21 :</span>
-                <span class="description">I presented my study at OPTICS & PHOTONICS International Congress 2025.</span>
-            {% endif %}
-        </p>
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/4/11 :</span>
-                <span class="description">埼玉大学に出張しました。</span>
-            {% else %}
-                <span class="date">・2025/4/11 :</span>
-                <span class="description">I visited Saitama University on a business trip.</span>
-            {% endif %}
-        </p>
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="date">・2025/4/1 :</span>
-                <span class="description">東北大学博士後期課程に入学しました</span>
-            {% else %}
-                <span class="date">・2025/4/1 :</span>
-                <span class="description">I joined Yoshikawa lab. at Tohoku University as phd. Student.</span>
-            {% endif %}
-        </p>
-    </div>
-
-    <br>
-    
     <section class="main_left_index" id="Page">
         <h1>{% if lang == 'ja' %}■関連ページ一覧{% else %}■Related Pages{% endif %}</h1>
     </section>
@@ -476,46 +57,78 @@
     <div class="news-list">
         <p class="news-item">
             {% if lang == 'ja' %}
-                <span class="description">・This Page  &emsp;: &emsp;<a href="https://fujiwara-chihaya.jp">https://fujiwara-chihaya.jp</span>
+                <span class="description">・This Page  &emsp;: &emsp;<a href="https://fujiwara-chihaya.jp">https://fujiwara-chihaya.jp</a></span>
             {% else %}
-                <span class="description">・This Page  &emsp;: &emsp;<a href="https://fujiwara-chihaya.jp">https://fujiwara-chihaya.jp</span>
+                <span class="description">・This Page  &emsp;: &emsp;<a href="https://fujiwara-chihaya.jp">https://fujiwara-chihaya.jp</a></span>
             {% endif %}
         </p>
       
         <p class="news-item">
             {% if lang == 'ja' %}
-                <span class="description">・Research Map  &emsp;: &emsp; <a href="https://researchmap.jp/C_Fujiwara"> https://researchmap.jp/C_Fujiwara</span>
+                <span class="description">・Research Map  &emsp;: &emsp; <a href="https://researchmap.jp/C_Fujiwara">https://researchmap.jp/C_Fujiwara</a></span>
             {% else %}
-                <span class="description">・Research Map  &emsp;: &emsp; <a href="https://researchmap.jp/C_Fujiwara"> https://researchmap.jp/C_Fujiwara</span>
+                <span class="description">・Research Map  &emsp;: &emsp; <a href="https://researchmap.jp/C_Fujiwara">https://researchmap.jp/C_Fujiwara</a></span>
             {% endif %}
         </p>
 
         <p class="news-item">
             {% if lang == 'ja' %}
-                <span class="description">・Research Gate  &emsp;: &emsp; <a href="https://www.researchgate.net/profile/Chihaya-Fujiwara"> https://www.researchgate.net/profile/Chihaya-Fujiwara</span>
+                <span class="description">・Research Gate  &emsp;: &emsp; <a href="https://www.researchgate.net/profile/Chihaya-Fujiwara">https://www.researchgate.net/profile/Chihaya-Fujiwara</a></span>
             {% else %}
-                <span class="description">・Research Gate  &emsp;: &emsp; <a href="https://www.researchgate.net/profile/Chihaya-Fujiwara"> https://www.researchgate.net/profile/Chihaya-Fujiwara</span>
+                <span class="description">・Research Gate  &emsp;: &emsp; <a href="https://www.researchgate.net/profile/Chihaya-Fujiwara">https://www.researchgate.net/profile/Chihaya-Fujiwara</a></span>
             {% endif %}
         </p>
 
         <p class="news-item">
             {% if lang == 'ja' %}
-                <span class="description">・Github  &emsp;: &emsp; <a href="https://github.com/Chihaya-Fujiwara"> https://github.com/Chihaya-Fujiwara</span>
+                <span class="description">・Github  &emsp;: &emsp; <a href="https://github.com/Chihaya-Fujiwara">https://github.com/Chihaya-Fujiwara</a></span>
             {% else %}
-                <span class="description">・Github  &emsp;: &emsp; <a href="https://github.com/Chihaya-Fujiwara"> https://github.com/Chihaya-Fujiwara</span>
+                <span class="description">・Github  &emsp;: &emsp; <a href="https://github.com/Chihaya-Fujiwara">https://github.com/Chihaya-Fujiwara</a></span>
             {% endif %}
         </p>
 
         <p class="news-item">
             {% if lang == 'ja' %}
-                <span class="description">・Qitta  &emsp;: &emsp; <a href="https://qiita.com/fch"> https://qiita.com/fch</span>
+                <span class="description">・Qiita  &emsp;: &emsp; <a href="https://qiita.com/fch">https://qiita.com/fch</a></span>
             {% else %}
-                <span class="description">・Qitta  &emsp;: &emsp; <a href="https://qiita.com/fch"> https://qiita.com/fch</span>
+                <span class="description">・Qiita  &emsp;: &emsp; <a href="https://qiita.com/fch">https://qiita.com/fch</a></span>
             {% endif %}
         </p>
 
     </div>
-    
+
+    <br>
+    <br>
+
+    <section class="main_left_index" id ="new">
+        <h1>{% if lang == 'ja' %}■新着{% else %}■New information{% endif %}</h1>
+    </section>
+
+    <!-- ▼▼▼ 新着 (news.csv から読み込み) ▼▼▼ -->
+    <div class="news-list">
+        {% for item in news %}
+            <p class="news-item">
+                {% if lang == 'ja' %}
+                    <span class="date">・{{ item.date_ja }} :</span>
+                    <span class="description">{{ item.description_ja|linkify }}</span>
+                {% else %}
+                    <span class="date">・{{ item.date_en }} :</span>
+                    <span class="description">{{ item.description_en|linkify }}</span>
+                {% endif %}
+            </p>
+
+            {% if item.image %}
+                <div>
+                    <img src="{{ url_for('static', filename=item.image) }}"
+                        style="width: {{ item.image_width or '50%' }}; max-height: 1000px; object-fit: cover; display: block; margin: auto;">
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <!-- ▲▲▲ 新着 ▲▲▲ -->
+
+    <br>
     <br>
 
     <section class="main_left_index" id='picture'>
@@ -543,6 +156,7 @@
         
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
     </section>
         
     <a href="{{ url_for('projects', lang=lang) }}" class="cta-button">{% if lang == 'ja' %}研究内容を見る{% else %}Explore Research Projects{% endif %}</a>

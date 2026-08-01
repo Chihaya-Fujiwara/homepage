@@ -2,7 +2,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', Arial;
     background-color: #ffffff;
     color: #ffffff;
     text-align: center;
@@ -121,6 +121,15 @@ body {
     color: black;
     text-align: center;
     font-size: 15px;
+}
+
+.hero,
+.maintext {
+    position: static;   /* absolute を打ち消す */
+    display: block;
+    width: 100%;
+    margin: 0 0 1em 0;
+    padding: 0.5em 0;
 }
 
 .header {
@@ -316,6 +325,20 @@ ul {
   /* ここに説明文用のスタイルを追加できます */
 }
 
+.page-top__img {
+    width: 100%;
+    max-height: 400px;   /* ← ここを小さく */
+    object-fit: cover;
+    display: block;
+}
+
+.mypage__img {
+    height: 100%;
+    max-height: 220px;   /* ← この数字でサイズを調整 */
+    object-fit: cover;
+    display: block;
+}
+
 /* =============================================== */
 /* スマートフォン向けのスタイル（ここから追記） */
 /* 画面幅が768px以下の場合に適用されます */
@@ -353,11 +376,11 @@ ul {
     /* --- 3. 文字サイズの調整 --- */
     /* 小さすぎる文字を読みやすい大きさに */
     .alltext, .main_s, .main_black {
-        font-size: 14px; /* 9pxは小さすぎるので、最低でも14px程度に */
+        font-size: 10px; /* 9pxは小さすぎるので、最低でも14px程度に */
     }
 
     .caption {
-        font-size: 12px; /* 8pxは小さすぎるので調整 */
+        font-size: 10px; /* 8pxは小さすぎるので調整 */
     }
     
     /* --- 4. その他の要素の調整 --- */
@@ -383,3 +406,4 @@ ul {
         margin-bottom: 5px; /* 日付と内容の間に余白 */
     }
 }
+
