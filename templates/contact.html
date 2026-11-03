@@ -1,20 +1,34 @@
 {% extends "layout.html" %}
 
-{% block title %}お問い合わせ{% endblock %}
+{% block title %}{{ '連絡先' if ja else 'Contact' }}{% endblock %}
 
 {% block content %}
 
-    <div class="lang-toggle">
-        <a href="{{ url_for('contact', lang='ja') }}">🇯🇵 日本語</a> | 
-        <a href="{{ url_for('contact', lang='en') }}">🇬🇧 English</a>
+<header class="page-head">
+    <p class="eyebrow">Contact</p>
+    <h1>{{ '連絡先' if ja else 'Contact' }}</h1>
+    <p class="lead">{{ 'ご質問・共同研究のご相談などは、以下のメールアドレスまでお気軽にご連絡ください。' if ja else 'For inquiries or potential collaborations, please feel free to contact me at the e-mail address below.' }}</p>
+</header>
+
+<div class="contact-grid">
+    <div class="card">
+        <h2>E-mail</h2>
+        <p class="mail">fujiwara.chihaya.e1 [at] s.mail.nagoya-u.ac.jp</p>
+        <p class="note" style="margin-top:8px">{{ '[at] を @ に置き換えてください。' if ja else 'Please replace [at] with @.' }}</p>
     </div>
+    <div class="card">
+        <h2>{{ '所属' if ja else 'Affiliation' }}</h2>
+        <p>{% if ja %}名古屋大学 大学院工学研究科<br>エネルギー理工学専攻 量子線写像工学研究グループ<br>黒澤研究室（X研）{% else %}Kurosawa Laboratory (X-Lab)<br>Department of Energy Engineering<br>Graduate School of Engineering, Nagoya University{% endif %}</p>
+    </div>
+    <div class="card" style="grid-column: 1 / -1;">
+        <h2>{{ 'オンラインプロフィール' if ja else 'Online Profiles' }}</h2>
+        <ul class="link-list">
+            <li><a href="https://researchmap.jp/C_Fujiwara" target="_blank" rel="noopener">researchmap.jp/C_Fujiwara</a><span class="k">researchmap</span></li>
+            <li><a href="https://www.researchgate.net/profile/Chihaya-Fujiwara" target="_blank" rel="noopener">researchgate.net/profile/Chihaya-Fujiwara</a><span class="k">ResearchGate</span></li>
+            <li><a href="https://github.com/Chihaya-Fujiwara" target="_blank" rel="noopener">github.com/Chihaya-Fujiwara</a><span class="k">GitHub</span></li>
+            <li><a href="https://qiita.com/fch" target="_blank" rel="noopener">qiita.com/fch</a><span class="k">Qiita</span></li>
+        </ul>
+    </div>
+</div>
 
-    <section class="main_left" id="grants">
-        <h1>{% if lang == 'ja' %}■連絡先{% else %}■Contacts{% endif %}</h1>
-    </section>
-
-    <section class="alltext">
-        <h2>{% if lang == 'ja' %}ご質問がある場合は、以下のメールアドレスまでご連絡ください。{% else %}If you hanve any questions, feel free to contact me at following email.{% endif %}</h2>
-        <h2><strong>Email:</strong> fujiwara.chihaya.p8@dc.tohoku.ac.jp</h2>
-    </section>
 {% endblock %}

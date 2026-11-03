@@ -1,125 +1,62 @@
 {% extends "layout.html" %}
 
-
+{% block title %}{{ 'VS Code で Jupyter 環境を構築' if ja else 'Setting Up Jupyter in VS Code' }}{% endblock %}
 
 {% block content %}
-    
-    <div class="lang-toggle">
-        <a href="{{ url_for('note_python', lang='ja') }}">🇯🇵 日本語</a> |
-        <a href="{{ url_for('note_python', lang='en') }}">🇬🇧 English</a>
-    </div>
 
+<header class="page-head">
+    <p class="eyebrow"><a href="{{ url_for('projects', lang=lang) }}">Notes</a> / Python</p>
+    <h1>{{ 'VS Code で Jupyter 環境を構築する' if ja else 'Setting Up Jupyter Notebook in VS Code' }}</h1>
+</header>
+
+<div class="with-toc">
     {% include "sidebar.html" %}
 
+    <article class="prose">
+        {% if ja %}
+        <p>Jupyter Notebook は Anaconda ディストリビューションとあわせて使われることが多いですが、VS Code 上で使うとコーディングがしやすく、データの管理もスムーズになります。Jupyter Notebook そのものについては、次の記事が非常に分かりやすいので参照してください。<br>
+        {{ 'https://qiita.com/hinastory/items/e179361ae806e8776c70' | rich }}</p>
 
-    <section class="header">
-        <h1>{% if lang == 'ja' %}VSコードでJupyter notebookを使用する方法
-            {% else %}How to use Jupyter notebook with VS code{% endif %}</h1>
-    </section>
+        <h2>1. Python のインストール</h2>
+        <p>任意のバージョンの Python を公式サイト（{{ 'https://www.python.org/' | rich }}）からダウンロードしてインストールします。Anaconda を使う場合は {{ 'https://www.anaconda.com/download' | rich }} からダウンロードします。</p>
 
-    <section class="alltext">
-        <h1>{% if lang == 'ja' %}Anaconda distributionで使用するのが一般的であるjupyter notebookであるが、vscode上でよりコーディングがやり易い上、
-            データ管理もスムーズに行える。jupyter notebookがそもそもどういうものかは下記記事が非常に分かりやすいので参照されたい。
-            (https://qiita.com/hinastory/items/e179361ae806e8776c70) 
-            {% else %}Although jupyter notebook is commonly used with Anaconda distribution, it is easier to code on vscode, and data management is also smoother,
-            Please refer to the following article for a very clear explanation of what jupyter notebook is all about.
-            (https://qiita.com/hinastory/items/e179361ae806e8776c70)
-            {% endif %}
-        </h1>
-    </section>
+        <h2>2. Visual Studio Code のインストール</h2>
+        <p>VS Code を公式サイト（{{ 'https://code.visualstudio.com/' | rich }}）からダウンロードしてインストールします。</p>
 
+        <h2>3. 仮想環境の作成と Jupyter のインストール</h2>
+        <p>Anaconda ではあらかじめ Jupyter 環境が用意されているため、インストールするだけで Jupyter Notebook を使用できます。一方、Python 単体をインストールした場合は、Jupyter に必要なパッケージを別途インストールする必要があります。</p>
+        <p>まず仮想環境を用意します。検索バーに <code>cmd</code> と入力してコマンドプロンプトを起動し、仮想環境を置くディレクトリを作成します。ここでは <code>C:\venv</code> に <code>jupyter</code> という名前の仮想環境を作成します。</p>
+<pre class="code"><code><span class="prompt">&gt; </span>cd C:\
+<span class="prompt">&gt; </span>mkdir venv
+<span class="prompt">&gt; </span>cd venv
+<span class="prompt">&gt; </span>python -m venv jupyter</code></pre>
+        <p>作成した仮想環境を有効化し、Jupyter 関連のパッケージをインストールします。</p>
+<pre class="code"><code><span class="prompt">&gt; </span>C:\venv\jupyter\Scripts\activate
+<span class="prompt">(jupyter) &gt; </span>pip install jupyter ipykernel</code></pre>
+        <p>VS Code で <code>.ipynb</code> ファイルを開き、右上の「カーネルの選択」から上記の仮想環境の Python を選ぶと、ノートブックを実行できます。</p>
+        {% else %}
+        <p>Although Jupyter Notebook is commonly used with the Anaconda distribution, running it within VS Code makes coding easier and data management smoother. For a clear introduction to Jupyter Notebook itself, see the following article (in Japanese):<br>
+        {{ 'https://qiita.com/hinastory/items/e179361ae806e8776c70' | rich }}</p>
 
-    <section class="main_left">
-        <h1>{% if lang == 'ja' %}Pythonのインストール{% else %}Install python{% endif %}</h1>
-    </section>
-    <section class="alltext">
-        <h1>{% if lang == 'ja' %}
-            任意のバージョンのpythonを以下のurlからダウンロードする。(https://www.python.org/)
-            Anacondaの場合は下記urlからダウンロードする。(https://www.anaconda.com/download)
-            {% else %}
-            Download any version of python from the following url (https://www.python.org/)
-            For Anaconda, download from the following url. (https://www.anaconda.com/download)
-            {% endif %}
-        </h1>
-    </section>
+        <h2>1. Install Python</h2>
+        <p>Download and install the desired version of Python from the official website ({{ 'https://www.python.org/' | rich }}). If you prefer Anaconda, download it from {{ 'https://www.anaconda.com/download' | rich }}.</p>
 
-    <section class="main_left">
-        <h1>{% if lang == 'ja' %}
-            Visual studio code (VScode)のインストール
-            {% else %}
-            Install Visual studio code (VScode)
-            {% endif %}
-        </h1>
-    </section>
-    <section class="alltext">
-        <h1>{% if lang == 'ja' %}
-            任意のバージョンのVScodeを以下のurlからダウンロードする。(https://code.visualstudio.com/)
-            {% else %}
-            Download any version of VScode from the following url (https://code.visualstudio.com/)
-            {% endif %}
-        </h1>
-    </section>
+        <h2>2. Install Visual Studio Code</h2>
+        <p>Download and install VS Code from the official website ({{ 'https://code.visualstudio.com/' | rich }}).</p>
 
-    <section class="main_left">
-        <h1>{% if lang == 'ja' %}
-            仮想環境の作製 & Jupyter pakegeのインストール
-            {% else %}
-            Creation of virtual environments & installation of Jupyter pakege
-            {% endif %}
-        </h1>
-    </section>
-    <section class="alltext">
-        <h1>{% if lang == 'ja' %}
-             Anaconda環境ではあらかじめjupyter環境が用意されているため、インストールしただけでjupyter
-            notebookが使用できるが、現在pythonをインストールしたのみなのでjupyter notebookに必要なパッケージをインストールする
-            必要がある。<br>
-            jupyter pakegeのインストールに先立ち、仮想環境を用意する。検索バーから"cmd"と入力しコマンドプロンプトを起動させる。
-            任意のディレクトリに入り、新たに仮想環境を作成するディレクトリを作る。ここではvenvディレクトリにjupyterという仮想環境を作成している。
-            <br>
-        <h1></h1>
-    </section>
-
-    <br>
-
-    <div class="code-box">
-        $ cd C:/ <br>
-        $ mkdir venv <br>
-        $ cd venv <br>
-        $ python -m venv jupyter <br>
-    </div>
-
-
-            {% else %}Download any version of VScode from the following url (https://code.visualstudio.com/)
-            {% endif %}
-        </h1>
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-    <div class="code-box">
-
-        $ cd external/ <br>
-        $ rm -rf wannier90/ <br>
-        $ git clone https://github.com/wannier-developers/wannier90.git wannier90
-
-    </div>
-
-
-    <br>
-    <br>
-
-    <a href="{{ url_for('research', lang=lang) }}" class="cta-button">
-        {% if lang == 'ja' %}研究内容を見る{% else %}Explore Research Projects{% endif %}
-    </a>
+        <h2>3. Create a Virtual Environment and Install Jupyter</h2>
+        <p>Anaconda ships with a ready-to-use Jupyter environment, whereas a standalone Python installation requires the Jupyter packages to be installed separately.</p>
+        <p>First, prepare a virtual environment. Type <code>cmd</code> in the Windows search bar to open the Command Prompt, and create a directory for virtual environments. In this example, a virtual environment named <code>jupyter</code> is created in <code>C:\venv</code>.</p>
+<pre class="code"><code><span class="prompt">&gt; </span>cd C:\
+<span class="prompt">&gt; </span>mkdir venv
+<span class="prompt">&gt; </span>cd venv
+<span class="prompt">&gt; </span>python -m venv jupyter</code></pre>
+        <p>Activate the environment and install the Jupyter packages.</p>
+<pre class="code"><code><span class="prompt">&gt; </span>C:\venv\jupyter\Scripts\activate
+<span class="prompt">(jupyter) &gt; </span>pip install jupyter ipykernel</code></pre>
+        <p>Open an <code>.ipynb</code> file in VS Code and choose the Python interpreter of this environment via “Select Kernel” in the upper-right corner to run the notebook.</p>
+        {% endif %}
+    </article>
+</div>
 
 {% endblock %}

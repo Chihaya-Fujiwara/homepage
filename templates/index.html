@@ -1,184 +1,99 @@
 {% extends "layout.html" %}
 
-{% block title %}ホーム{% endblock %}
+{% block title %}{{ 'ホーム' if ja else 'Home' }}{% endblock %}
 
 {% block content %}
 
-    <!-- 言語切り替え -->
-    <div class="lang-toggle">
-        <a href="{{ url_for('index', lang='ja') }}">🇯🇵 日本語</a> | 
-        <a href="{{ url_for('index', lang='en') }}">🇬🇧 English</a>
+<section class="hero">
+    <div>
+        <p class="eyebrow">Materials Science · Luminescent Materials</p>
+        <h1>{{ '藤原 千隼' if ja else 'Chihaya Fujiwara' }}</h1>
+        <p class="name-alt">{{ 'Chihaya Fujiwara' if ja else '藤原 千隼' }}</p>
+        <p class="affiliation">
+            {% if ja %}
+            名古屋大学 大学院工学研究科 エネルギー理工学専攻<br>
+            量子線写像工学研究グループ 黒澤研究室（X研）<br>
+            日本学術振興会 特別研究員（DC1）
+            {% else %}
+            Kurosawa Laboratory (X-Lab), Department of Energy Engineering,<br>
+            Graduate School of Engineering, Nagoya University<br>
+            JSPS Research Fellow (DC1)
+            {% endif %}
+        </p>
+        <p class="statement">
+            {% if ja %}
+            光学材料を主軸に、ハライドペロブスカイトをはじめとする発光材料について、結晶育成・光学／放射線特性評価の実験と第一原理計算の両面から研究を進めています。
+            {% else %}
+            My research focuses on optical materials, particularly luminescent materials including halide perovskites, combining experimental approaches (crystal growth and optical/radiation characterization) with first-principles calculations.
+            {% endif %}
+        </p>
+        <div class="btn-row">
+            <a class="btn primary" href="{{ url_for('research', lang=lang) }}">{{ '研究内容' if ja else 'Research' }} →</a>
+            <a class="btn" href="{{ url_for('publications', lang=lang) }}">{{ '業績一覧' if ja else 'Publications' }}</a>
+            <a class="btn" href="https://researchmap.jp/C_Fujiwara" target="_blank" rel="noopener">researchmap ↗</a>
+        </div>
     </div>
+    <figure class="hero-figure">
+        <img src="{{ url_for('static', filename='web/top.jpg') }}" alt="{{ '研究の様子' if ja else 'Research overview' }}" width="1800" height="812">
+    </figure>
+</section>
 
-        
-    <div class="sidebar">
-            <li><a href="#contact">{% if lang == 'ja' %}■連絡先{% else %}■Contact{% endif %}</a></li>
-            <li><a href="#new">{% if lang == 'ja' %}■新着{% else %}■New information{% endif %}</a></li>
-            <li><a href="#page">{% if lang == 'ja' %}■関連ページ一覧{% else %}■Related Pages{% endif %}</a></li>
-            <li><a href="#page">{% if lang == 'ja' %}■合成した結晶の写真{% else %}■Photograph of synthesized crystals{% endif %}</a></li>
-    </div>
-    
+<div class="home-grid">
+    <section class="section" id="news">
+        <h2 class="section-title">{{ 'お知らせ' if ja else 'News' }}</h2>
 
-    
-    <section class="page-top">
-        <img src="{{ url_for('static', filename='fig/top.jpg') }}" 
-             alt="Top image" 
-             class="page-top__img">
-    </section>
-
-    <section class="hero">
-        <h1>{% if lang == 'ja' %}名古屋大学 工学研究科 エネルギー理工学専攻 <br> 量子線写像工学研究グループ (X研) <br> 藤原千隼のホームページです.{% else %}Homepage of Chihaya Fujiwara, in Nagoya Univ.{% endif %}</h1><br>
-    </section>
-
-    <br>
-    <br>
-    <br>
-    <br>
-
-    <section class="maintext">
-        <h1>{% if lang == 'ja' %}研究分野は光学材料を主軸とし、ハライドペロブスカイトを含めた発光材料を実験的および計算科学の側面から研究を進めております。{% else %} I am engaged in research and development of inorganic materials, especially luminescent materials.{% endif %}</h1><br>
-    </section>
-    
-    <br>
-
-    <section class="main_left_index" id="contact">
-        <h1>{% if lang == 'ja' %}■連絡先{% else %}■Contact{% endif %}</h1>
-    </section>
-    <section class="main_black">
-        <h1>・fujiwara.chihaya.e1 [at] s.mail.nagoya-u.ac.jp</h1>
-    </section>
-    
-    <br>
-
-    <section class="main_left_index" id="Page">
-        <h1>{% if lang == 'ja' %}■関連ページ一覧{% else %}■Related Pages{% endif %}</h1>
-    </section>
-    
-    <div class="news-list">
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="description">・This Page  &emsp;: &emsp;<a href="https://fujiwara-chihaya.jp">https://fujiwara-chihaya.jp</a></span>
-            {% else %}
-                <span class="description">・This Page  &emsp;: &emsp;<a href="https://fujiwara-chihaya.jp">https://fujiwara-chihaya.jp</a></span>
-            {% endif %}
-        </p>
-      
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="description">・Research Map  &emsp;: &emsp; <a href="https://researchmap.jp/C_Fujiwara">https://researchmap.jp/C_Fujiwara</a></span>
-            {% else %}
-                <span class="description">・Research Map  &emsp;: &emsp; <a href="https://researchmap.jp/C_Fujiwara">https://researchmap.jp/C_Fujiwara</a></span>
-            {% endif %}
-        </p>
-
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="description">・Research Gate  &emsp;: &emsp; <a href="https://www.researchgate.net/profile/Chihaya-Fujiwara">https://www.researchgate.net/profile/Chihaya-Fujiwara</a></span>
-            {% else %}
-                <span class="description">・Research Gate  &emsp;: &emsp; <a href="https://www.researchgate.net/profile/Chihaya-Fujiwara">https://www.researchgate.net/profile/Chihaya-Fujiwara</a></span>
-            {% endif %}
-        </p>
-
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="description">・Github  &emsp;: &emsp; <a href="https://github.com/Chihaya-Fujiwara">https://github.com/Chihaya-Fujiwara</a></span>
-            {% else %}
-                <span class="description">・Github  &emsp;: &emsp; <a href="https://github.com/Chihaya-Fujiwara">https://github.com/Chihaya-Fujiwara</a></span>
-            {% endif %}
-        </p>
-
-        <p class="news-item">
-            {% if lang == 'ja' %}
-                <span class="description">・Qiita  &emsp;: &emsp; <a href="https://qiita.com/fch">https://qiita.com/fch</a></span>
-            {% else %}
-                <span class="description">・Qiita  &emsp;: &emsp; <a href="https://qiita.com/fch">https://qiita.com/fch</a></span>
-            {% endif %}
-        </p>
-
-    </div>
-
-    <br>
-    <br>
-
-    <section class="main_left_index" id ="new">
-        <h1>{% if lang == 'ja' %}■新着{% else %}■New information{% endif %}</h1>
-    </section>
-
-    <!-- ▼▼▼ 新着 (news.csv から読み込み) ▼▼▼ -->
-    <div class="news-list">
-        {% for item in news %}
-            <p class="news-item">
-                {% if lang == 'ja' %}
-                    <span class="date">・{{ item.date_ja }} :</span>
-                    <span class="description">{{ item.description_ja|linkify }}</span>
-                {% else %}
-                    <span class="date">・{{ item.date_en }} :</span>
-                    <span class="description">{{ item.description_en|linkify }}</span>
+        {% macro news_item(item) %}
+        <li>
+            <time>{{ (item.date_ja if ja else (item.date_en or item.date_ja)) | replace('/', '.') }}</time>
+            <div class="desc">
+                {{ (item.description_ja if ja else (item.description_en or item.description_ja)) | rich }}
+                {% if item.image %}
+                <img class="news-img" src="{{ url_for('static', filename=item.image) }}" alt="" loading="lazy"
+                     style="width: {{ item.image_width or '60%' }};">
                 {% endif %}
-            </p>
+            </div>
+        </li>
+        {% endmacro %}
 
-            {% if item.image %}
-                <div>
-                    <img src="{{ url_for('static', filename=item.image) }}"
-                        style="width: {{ item.image_width or '50%' }}; max-height: 1000px; object-fit: cover; display: block; margin: auto;">
-                </div>
-            {% endif %}
+        {% set first_n = 8 %}
+        <ul class="news">
+            {% for item in news[:first_n] %}{{ news_item(item) }}{% endfor %}
+        </ul>
+
+        {% if news | length > first_n %}
+        <details class="news-more">
+            <summary>{{ 'すべて表示（%d件）' % (news | length) if ja else 'Show all (%d items)' % (news | length) }}</summary>
+            <ul class="news">
+                {% for item in news[first_n:] %}{{ news_item(item) }}{% endfor %}
+            </ul>
+        </details>
+        {% endif %}
+    </section>
+
+    <aside>
+        <div class="card side-card" id="contact">
+            <h2>{{ '連絡先' if ja else 'Contact' }}</h2>
+            <p class="mail">fujiwara.chihaya.e1 [at] s.mail.nagoya-u.ac.jp</p>
+        </div>
+        <div class="card side-card" id="links">
+            <h2>{{ '関連リンク' if ja else 'Links' }}</h2>
+            <ul class="link-list">
+                <li><a href="https://researchmap.jp/C_Fujiwara" target="_blank" rel="noopener">researchmap</a><span class="k">{{ '業績' if ja else 'Profile' }}</span></li>
+                <li><a href="https://www.researchgate.net/profile/Chihaya-Fujiwara" target="_blank" rel="noopener">ResearchGate</a><span class="k">{{ '論文' if ja else 'Papers' }}</span></li>
+                <li><a href="https://github.com/Chihaya-Fujiwara" target="_blank" rel="noopener">GitHub</a><span class="k">{{ 'コード' if ja else 'Code' }}</span></li>
+                <li><a href="https://qiita.com/fch" target="_blank" rel="noopener">Qiita</a><span class="k">{{ '技術記事' if ja else 'Tech notes' }}</span></li>
+            </ul>
+        </div>
+    </aside>
+</div>
+
+<section class="section" id="crystals">
+    <h2 class="section-title">{{ '育成した結晶' if ja else 'Grown Crystals' }}</h2>
+    <div class="gallery">
+        {% for i in range(1, 6) %}
+        <figure><img src="{{ url_for('static', filename='web/photo%d.jpg' % i) }}" alt="{{ '育成した結晶の写真' if ja else 'Photograph of a grown crystal' }}" loading="lazy"></figure>
         {% endfor %}
     </div>
+</section>
 
-    <!-- ▲▲▲ 新着 ▲▲▲ -->
-
-    <br>
-    <br>
-
-    <section class="main_left_index" id='picture'>
-        <h1>{% if lang == 'ja' %}■合成した結晶の写真{% else %}■Photograph of synthesized crystals{% endif %}</h1>
-    </section>
-    
-    <!-- スライドショー -->
-    <section class="slideshow-container">
-        <div class="slide fade">
-            <img src="{{ url_for('static', filename='images/photo1.jpg') }}" class="slide-image" style="width: 80%; max-height: 300px; object-fit: cover;">
-        </div>
-        <div class="slide fade">
-            <img src="{{ url_for('static', filename='images/photo2.jpg') }}" class="slide-image" style="width: 80%; max-height: 300px; object-fit: cover;">
-        </div>
-        <div class="slide fade">
-            <img src="{{ url_for('static', filename='images/photo3.jpg') }}" class="slide-image" style="width: 80%; max-height: 300px; object-fit: cover;">
-        </div>
-        <div class="slide fade">
-            <img src="{{ url_for('static', filename='images/photo4.jpg') }}" class="slide-image" style="width: 80%; max-height: 300px; object-fit: cover;">
-        </div>
-        <div class="slide fade">
-            <img src="{{ url_for('static', filename='images/photo5.jpg') }}" class="slide-image" style="width: 80%; max-height: 300px; object-fit: cover;">
-        </div>
-
-        
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-    </section>
-        
-    <a href="{{ url_for('projects', lang=lang) }}" class="cta-button">{% if lang == 'ja' %}研究内容を見る{% else %}Explore Research Projects{% endif %}</a>
-
-    <script>
-        let slideIndex = 1;
-        showSlides(slideIndex);
-
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
-
-        function showSlides(n) {
-            let slides = document.getElementsByClassName("slide");
-            if (n > slides.length) { slideIndex = 1; }
-            if (n < 1) { slideIndex = slides.length; }
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slides[slideIndex - 1].style.display = "block";
-        }
-
-        setInterval(() => plusSlides(1), 5000);
-    </script>
 {% endblock %}

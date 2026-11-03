@@ -2,49 +2,80 @@
 <html lang="{{ lang }}">
 <head>
     <meta charset="UTF-8">
-    
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-950DDS26PX"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-    
       gtag('config', 'G-950DDS26PX');
     </script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}研究者サイト{% endblock %}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>{% block title %}{% endblock %} | {{ '藤原 千隼' if ja else 'Chihaya Fujiwara' }}</title>
+    <meta name="description" content="{% if ja %}藤原千隼（名古屋大学）の研究者ページ。ハロゲン化物シンチレータ・発光材料の結晶育成、光学・放射線特性評価、第一原理計算。{% else %}Research website of Chihaya Fujiwara (Nagoya University): crystal growth, optical and radiation characterization, and first-principles calculations of halide scintillators and luminescent materials.{% endif %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body>
+<body class="lang-{{ lang }}">
 
-    <header class="navbar">
-        <div class="logo">Fujiwara Chihaya (Tohoku univ.)</div>
-        <nav>
-            <ul>
-                <li><a href="{{ url_for('index', lang=lang) }}">{% if lang == 'ja' %}ホーム{% else %}Home{% endif %}</a></li>
-                <li><a href="{{ url_for('about', lang=lang) }}">{% if lang == 'ja' %}研究者紹介{% else %}About{% endif %}</a></li>
-                <li><a href="{{ url_for('research', lang=lang) }}">{% if lang == 'ja' %}研究内容{% else %}Research{% endif %}</a></li>
-                <li><a href="{{ url_for('publications', lang=lang) }}">{% if lang == 'ja' %}業績{% else %}Publications{% endif %}</a></li>
-                <li><a href="{{ url_for('projects', lang=lang) }}">{% if lang == 'ja' %}Notes{% else %}Notes{% endif %}</a></li>
-                <li><a href="{{ url_for('contact', lang=lang) }}">{% if lang == 'ja' %}お問い合わせ{% else %}Contact{% endif %}</a></li>
-            </ul>
-        </nav>
+    {% set nav = [
+        ('index', 'ホーム', 'Home'),
+        ('about', 'プロフィール', 'Profile'),
+        ('research', '研究内容', 'Research'),
+        ('publications', '業績', 'Publications'),
+        ('projects', 'ノート', 'Notes'),
+        ('contact', '連絡先', 'Contact'),
+    ] %}
+    {% set active = request.endpoint %}
+    {% if active in ('note_python', 'note_first_principles') %}{% set active = 'projects' %}{% endif %}
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="brand" href="{{ url_for('index', lang=lang) }}">
+                <span class="brand-name">{{ '藤原 千隼' if ja else 'Chihaya Fujiwara' }}</span>
+                <span class="brand-sub">{{ 'Chihaya Fujiwara' if ja else 'Nagoya University' }}</span>
+            </a>
+
+            <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Menu">
+            <label for="nav-toggle" class="nav-burger" aria-hidden="true"><span></span></label>
+
+            <nav class="site-nav" aria-label="Main">
+                <ul>
+                    {% for ep, label_ja, label_en in nav %}
+                    <li><a href="{{ url_for(ep, lang=lang) }}" {% if active == ep %}class="is-active" aria-current="page"{% endif %}>{{ label_ja if ja else label_en }}</a></li>
+                    {% endfor %}
+                </ul>
+                <div class="lang-switch" role="group" aria-label="Language">
+                    <a href="{{ lang_url('ja') }}" {% if ja %}class="is-active"{% endif %} lang="ja">日本語</a>
+                    <a href="{{ lang_url('en') }}" {% if not ja %}class="is-active"{% endif %} lang="en">EN</a>
+                </div>
+            </nav>
+        </div>
     </header>
 
-    <div class="lang-toggle">
-        <a href="?lang=ja">🇯🇵 日本語</a> | 
-        <a href="?lang=en">🇬🇧 English</a>
-    </div>
-
-    <main>
+    <main class="site-main">
         {% block content %}{% endblock %}
     </main>
 
-    <footer>
-        <p>&copy; 2025 My Research. All Rights Reserved.</p>
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div>
+                <p class="footer-name">{{ '藤原 千隼' if ja else 'Chihaya Fujiwara' }}</p>
+                <p class="footer-aff">{% if ja %}名古屋大学 大学院工学研究科 エネルギー理工学専攻 黒澤研究室{% else %}Kurosawa Laboratory, Department of Energy Engineering, Graduate School of Engineering, Nagoya University{% endif %}</p>
+            </div>
+            <ul class="footer-links">
+                <li><a href="https://researchmap.jp/C_Fujiwara" target="_blank" rel="noopener">researchmap</a></li>
+                <li><a href="https://www.researchgate.net/profile/Chihaya-Fujiwara" target="_blank" rel="noopener">ResearchGate</a></li>
+                <li><a href="https://github.com/Chihaya-Fujiwara" target="_blank" rel="noopener">GitHub</a></li>
+                <li><a href="https://qiita.com/fch" target="_blank" rel="noopener">Qiita</a></li>
+            </ul>
+        </div>
+        <p class="copyright">&copy; 2025–{{ current_year }} Chihaya Fujiwara</p>
     </footer>
 
+    {% block scripts %}{% endblock %}
 </body>
 </html>

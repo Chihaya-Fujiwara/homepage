@@ -1,36 +1,26 @@
 {% extends "layout.html" %}
 
-
+{% block title %}{{ '第一原理計算メモ' if ja else 'Notes on First-Principles Calculations' }}{% endblock %}
 
 {% block content %}
-    <!-- 言語切り替え -->
-    <div class="lang-toggle">
-        <a href="{{ url_for('note_first_principles', lang='ja') }}">🇯🇵 日本語</a> |
-        <a href="{{ url_for('note_first_principles', lang='en') }}">🇬🇧 English</a>
-    </div>
 
+<header class="page-head">
+    <p class="eyebrow"><a href="{{ url_for('projects', lang=lang) }}">Notes</a> / DFT</p>
+    <h1>{{ '第一原理計算メモ' if ja else 'Notes on First-Principles Calculations' }}</h1>
+</header>
+
+<div class="with-toc">
     {% include "sidebar.html" %}
 
-    <section class="main_left">
-        <h1>{% if lang == 'ja' %}■Jaaaaaa環境{% else %}■Grantsssssss{% endif %}</h1>
-    </section>
+    <article class="prose">
+        <p class="note">{{ 'このページは準備中です。内容は随時追加します。' if ja else 'This page is under construction; content will be added progressively.' }}</p>
 
-    
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    
-
-    <a href="{{ url_for('research', lang=lang) }}" class="cta-button">
-        {% if lang == 'ja' %}研究内容を見る{% else %}Explore Research Projects{% endif %}
-    </a>
+        <h2>{{ 'Quantum ESPRESSO：Wannier90 の再取得' if ja else 'Quantum ESPRESSO: Re-fetching Wannier90' }}</h2>
+        <p>{{ 'Quantum ESPRESSO のソースディレクトリで、同梱の Wannier90 を最新版に置き換える場合の手順です。' if ja else 'Commands for replacing the bundled Wannier90 with the latest version in the Quantum ESPRESSO source directory.' }}</p>
+<pre class="code"><code><span class="prompt">$ </span>cd external/
+<span class="prompt">$ </span>rm -rf wannier90/
+<span class="prompt">$ </span>git clone https://github.com/wannier-developers/wannier90.git wannier90</code></pre>
+    </article>
+</div>
 
 {% endblock %}

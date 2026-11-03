@@ -1,25 +1,36 @@
 {% extends "layout.html" %}
 
-{% block content %}
-    <!-- 言語切り替え -->
-    <div class="lang-toggle">
-        <a href="{{ url_for('projects', lang='ja') }}">🇯🇵 日本語</a> |
-        <a href="{{ url_for('projects', lang='en') }}">🇬🇧 English</a>
-    </div>
+{% block title %}{{ 'ノート' if ja else 'Notes' }}{% endblock %}
 
+{% block content %}
+
+<header class="page-head">
+    <p class="eyebrow">Notes</p>
+    <h1>{{ 'ノート' if ja else 'Notes' }}</h1>
+    <p class="lead">
+        {% if ja %}
+        研究で用いている計算環境・解析手法についての覚え書きです。技術記事は <a href="https://qiita.com/fch" target="_blank" rel="noopener">Qiita</a>、コードは <a href="https://github.com/Chihaya-Fujiwara" target="_blank" rel="noopener">GitHub</a> でも公開しています。
+        {% else %}
+        Working notes on the computational environments and analysis methods used in my research. Additional technical articles are available on <a href="https://qiita.com/fch" target="_blank" rel="noopener">Qiita</a>, and source code on <a href="https://github.com/Chihaya-Fujiwara" target="_blank" rel="noopener">GitHub</a>.
+        {% endif %}
+    </p>
+</header>
+
+<div class="with-toc">
     {% include "sidebar.html" %}
 
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-    
-    <a href="{{ url_for('research', lang=lang) }}" class="cta-button">
-        {% if lang == 'ja' %}研究内容を見る{% else %}Explore Research Projects{% endif %}
-    </a>
+    <div class="topics">
+        <a class="card topic" href="{{ url_for('note_python', lang=lang) }}" style="color: inherit; text-decoration: none;">
+            <span class="num">PYTHON</span>
+            <h3>{{ 'VS Code で Jupyter 環境を構築' if ja else 'Setting Up Jupyter in VS Code' }}</h3>
+            <p>{{ 'Python・VS Code のインストールから仮想環境の作成、Jupyter の導入まで。' if ja else 'From installing Python and VS Code to creating a virtual environment and installing Jupyter.' }}</p>
+        </a>
+        <a class="card topic" href="{{ url_for('note_first_principles', lang=lang) }}" style="color: inherit; text-decoration: none;">
+            <span class="num">DFT</span>
+            <h3>{{ '第一原理計算メモ' if ja else 'Notes on First-Principles Calculations' }}</h3>
+            <p>{{ 'Quantum ESPRESSO を中心とした計算環境のメモ（随時追加）。' if ja else 'Notes on computational environments, mainly for Quantum ESPRESSO (updated as needed).' }}</p>
+        </a>
+    </div>
+</div>
 
 {% endblock %}

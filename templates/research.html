@@ -1,134 +1,119 @@
 {% extends "layout.html" %}
 
-{% block title %}研究内容{% endblock %}
+{% block title %}{{ '研究内容' if ja else 'Research' }}{% endblock %}
 
 {% block content %}
-    <!-- 言語切り替え -->
-    
-    <div class="lang-toggle">
-        <a href="{{ url_for('research', lang='ja') }}">🇯🇵 日本語</a> | 
-        <a href="{{ url_for('research', lang='en') }}">🇬🇧 English</a>
-    </div>
-    
-    <div class="sidebar">        
-        <li><a href="#keyword">{% if lang == 'ja' %}■研究キーワード{% else %}■Key words{% endif %}</a></li>
-        <li><a href="#research">{% if lang == 'ja' %}■研究内容{% else %}■Research Fields{% endif %}</a></li>
-    </div>
 
-    <br>
+<header class="page-head">
+    <p class="eyebrow">Research</p>
+    <h1>{{ '研究内容' if ja else 'Research' }}</h1>
+    <p class="lead">
+        {% if ja %}
+        ハロゲン化物を中心とする無機発光材料について、結晶育成から光学・放射線特性の評価、第一原理計算による解析までを一貫して行っています。
+        {% else %}
+        I study inorganic luminescent materials, with a focus on halides, covering everything from crystal growth and optical/radiation characterization to analysis based on first-principles calculations.
+        {% endif %}
+    </p>
+</header>
 
-    <section class="main_left" id="keyword">
-        <h1>{% if lang == 'ja' %}■研究キーワード{% else %}■Key words{% endif %}</h1>
-    </section>
-
-    <section class="main_black">
-        <h1>{% if lang == 'ja' %}無機材料, ハロゲン化物結晶, シンチレータ, Linux, python, 第一原理計算, Quantum espresso, VASP, 放射線,  中性子検出{% else %}Inorganic materials, Halide crystals, Scintillators, , Linux, python, First-principles calculations, Quantum espresso, VASP,Radiation, Neutron detection{% endif %}</h1>
-    </section>
-
-    <br>
-
-    <section class="main_left">
-        <h1>{% if lang == 'ja' %}装置一覧{% else %}If you are interested in our research, first-principles calculations, or applications we have developed, <br> please contact us.{% endif %}</h1>
-    </section>
-
-
-    <section class="main_black">
-        <h1>{% if lang == 'ja' %}・光学特性の評価{% else %}・Evaluation of optical properties{% endif %} </h1>
-    </section>
-
-    
+<div class="with-toc">
+    <nav class="toc" aria-label="{{ '目次' if ja else 'Contents' }}">
+        <p>{{ '目次' if ja else 'Contents' }}</p>
+        <ul>
+            <li><a href="#keywords">{{ '研究キーワード' if ja else 'Keywords' }}</a></li>
+            <li><a href="#topics">{{ '研究テーマ' if ja else 'Research Topics' }}</a></li>
+            <li><a href="#facilities">{{ '実験設備' if ja else 'Facilities' }}</a></li>
+        </ul>
+    </nav>
 
     <div>
-        <img src="{{ url_for('static', filename='fig/pl.jpg') }}"  style="width: 80%; max-height: 1000px; object-fit: cover; display: block; margin: auto;">
+        <section class="section" id="keywords">
+            <h2 class="section-title">{{ '研究キーワード' if ja else 'Keywords' }}</h2>
+            <ul class="chips">
+                {% if ja %}
+                {% for k in ['無機材料', 'ハロゲン化物結晶', 'シンチレータ', '放射線', '中性子検出', '第一原理計算', 'Quantum ESPRESSO', 'VASP', 'Python', 'Linux'] %}<li>{{ k }}</li>{% endfor %}
+                {% else %}
+                {% for k in ['Inorganic materials', 'Halide crystals', 'Scintillators', 'Radiation detection', 'Neutron detection', 'First-principles calculations', 'Quantum ESPRESSO', 'VASP', 'Python', 'Linux'] %}<li>{{ k }}</li>{% endfor %}
+                {% endif %}
+            </ul>
+        </section>
+
+        <section class="section" id="topics">
+            <h2 class="section-title">{{ '研究テーマ' if ja else 'Research Topics' }}</h2>
+            <div class="topics">
+                <article class="card topic wide">
+                    <div>
+                        <span class="num">01</span>
+                        <h3>{{ 'ハロゲン化物単結晶の育成' if ja else 'Growth of Halide Single Crystals' }}</h3>
+                        <p>
+                            {% if ja %}
+                            主にハライドペロブスカイト単結晶を、ブリッジマン–ストックバーガー法および気相輸送法により育成しています。
+                            {% else %}
+                            Halide perovskite single crystals are grown mainly by the Bridgman–Stockbarger method and by vapor-phase transport.
+                            {% endif %}
+                        </p>
+                    </div>
+                    <figure>
+                        <img src="{{ url_for('static', filename='web/fig2.jpg') }}" alt="{{ '育成した結晶' if ja else 'Grown crystals' }}" loading="lazy" width="677" height="418">
+                        <figcaption><b>{{ '図' if ja else 'Fig.' }}</b> {{ '育成したハロゲン化物結晶' if ja else 'As-grown halide crystals.' }}</figcaption>
+                    </figure>
+                </article>
+
+                <article class="card topic">
+                    <span class="num">02</span>
+                    <h3>{{ '光学特性の評価' if ja else 'Optical Characterization' }}</h3>
+                    <p>{% if ja %}フォトルミネッセンス、透過率、赤外吸収などの測定により、発光特性と光学吸収を評価しています。{% else %}Luminescence and optical absorption are evaluated by photoluminescence, transmittance, and infrared absorption measurements.{% endif %}</p>
+                </article>
+
+                <article class="card topic">
+                    <span class="num">03</span>
+                    <h3>{{ '放射線検出特性の評価' if ja else 'Radiation-Detection Properties' }}</h3>
+                    <p>{% if ja %}中性子およびガンマ線に対するシンチレーション特性を評価し、放射線検出器への応用を検討しています。{% else %}Scintillation responses to neutrons and gamma rays are characterized with a view to applications in radiation detectors.{% endif %}</p>
+                </article>
+
+                <article class="card topic">
+                    <span class="num">04</span>
+                    <h3>{{ '第一原理計算による無機材料の解析' if ja else 'First-Principles Analysis of Inorganic Materials' }}</h3>
+                    <p>{% if ja %}Quantum ESPRESSO や VASP を用いた電子状態計算により、発光機構や物性の起源を解析しています。{% else %}Electronic-structure calculations using Quantum ESPRESSO and VASP are employed to clarify luminescence mechanisms and the origins of material properties.{% endif %}</p>
+                </article>
+
+                <article class="card topic">
+                    <span class="num">05</span>
+                    <h3>{{ '電子状態データベースの構築' if ja else 'Electronic-Structure Database' }}</h3>
+                    <p>{% if ja %}第一原理計算に基づき、無機材料の電子状態データベースを作成しています。{% else %}An electronic-structure database of inorganic materials is being constructed on the basis of first-principles calculations.{% endif %}</p>
+                </article>
+
+                <article class="card topic">
+                    <span class="num">06</span>
+                    <h3>{{ '解析ソフトウェアの開発' if ja else 'Analysis Software Development' }}</h3>
+                    <p>{% if ja %}光学特性評価のためのアプリケーションをはじめ、研究を支援するプログラムを Python で開発しています。{% else %}Software for optical characterization and other research-support tools are developed in Python.{% endif %}</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="facilities">
+            <h2 class="section-title">{{ '実験設備' if ja else 'Facilities and Instruments' }}</h2>
+            <div class="facilities">
+                <figure>
+                    <img src="{{ url_for('static', filename='web/pl.jpg') }}" alt="" loading="lazy" width="1400" height="631">
+                    <figcaption><b>{{ 'フォトルミネッセンス（PL）測定' if ja else 'Photoluminescence (PL) spectroscopy' }}</b></figcaption>
+                </figure>
+                <figure>
+                    <img src="{{ url_for('static', filename='web/trans.jpg') }}" alt="" loading="lazy" width="1400" height="631">
+                    <figcaption><b>{{ '透過率測定' if ja else 'Optical transmittance measurement' }}</b></figcaption>
+                </figure>
+                <figure>
+                    <img src="{{ url_for('static', filename='web/ftir.jpg') }}" alt="" loading="lazy" width="1400" height="631">
+                    <figcaption><b>{{ 'フーリエ変換赤外分光（FT-IR）' if ja else 'Fourier-transform infrared (FT-IR) spectroscopy' }}</b></figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <div class="callout">
+            <p>{% if ja %}研究内容、第一原理計算、開発したアプリケーションにご関心をお持ちの方は、お気軽にご連絡ください。{% else %}If you are interested in our research, first-principles calculations, or the software we have developed, please feel free to contact me.{% endif %}</p>
+            <a class="btn primary" href="{{ url_for('contact', lang=lang) }}">{{ '連絡先' if ja else 'Contact' }} →</a>
+        </div>
     </div>
+</div>
 
-    <div>
-        <img src="{{ url_for('static', filename='fig/trans.jpg') }}"  style="width: 80%; max-height: 1000px; object-fit: cover; display: block; margin: auto;">
-    </div>
-
-    <div>
-        <img src="{{ url_for('static', filename='fig/ftir.jpg') }}"  style="width: 80%; max-height: 1000px; object-fit: cover; display: block; margin: auto;">
-    </div>
-    
-    <br>
-
-    <section class="main_left"  id="research">
-        <h1>{% if lang == 'ja' %}■研究内容{% else %}■Research Fields{% endif %}</h1>
-    </section>
-    
-
-    <section class="main_black">
-        <h1>{% if lang == 'ja' %}・ハロゲン化物単結晶の合成{% else %}・Synthesis of Halide Single Crystals{% endif %} </h1>
-    </section>
-
-    <section class="alltext">
-        <h1>{% if lang == 'ja' %}主にハライドペロブスカイト結晶をブリッジマンストックバーガー法や気相輸送法で作製しております。
-            {% else %}I mainly fabricate halide crystals by the Bridgman-Stockberger method or vapor phase transport.{% endif %} </h1>
-    </section>
-
-    <div>
-        <img src="{{ url_for('static', filename='fig/fig2.jpg') }}"  style="width: 30%; max-height: 1000px; object-fit: cover; display: block; margin: auto;"">
-    </div>
-
-    
-    <section class="caption">
-        <h1>{% if lang == 'ja' %}図 合成した結晶
-            {% else %}Fig. Grown crystals{% endif %} </h1>
-    </section>
-    
-
-    <section class="main_black">
-        <h1>{% if lang == 'ja' %}・光学特性の評価{% else %}・Evaluation of optical properties{% endif %} </h1>
-    </section>
-
-    <section class="main_black">
-        <h1>{% if lang == 'ja' %}・放射線特性の評価{% else %}・Evaluation of radiation properties{% endif %} </h1>
-    </section>
-
-    <section class="main_black">
-        <h1>{% if lang == 'ja' %}・第一原理計算による無機材料の解析{% else %}・Analysis of inorganic materials by first-principles calculations.{% endif %} </h1>
-    </section>
-
-    <section class="main_black">
-        <h1>{% if lang == 'ja' %}・第一原理計算による電子状態データベース作成{% else %}・Creation of electronic structure database by first-principles calculations.{% endif %} </h1>
-    </section>
-    
-    <section class="caption">
-        <h1>{% if lang == 'ja' %}ピークサーチの様子
-            {% else %}Fig. Peak Search{% endif %} </h1>
-    </section>
-
-    <section class="main_black">
-        <h1>{% if lang == 'ja' %}・光学特性評価アプリケーションの開発{% else %}・Development of optical characterization applications{% endif %} </h1>
-    </section>
-
-    <section class="main_black">
-        <h1>{% if lang == 'ja' %}・その他プログラム{% else %}・The others programs{% endif %} </h1>
-    </section>
-
-
-    <br>
-    
-    <a href="{{ url_for('research', lang=lang) }}" class="cta-button">{% if lang == 'ja' %}研究内容を見る{% else %}Explore Research Projects{% endif %}</a>
-
-    <script>
-        let slideIndex = 1;
-        showSlides(slideIndex);
-
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
-
-        function showSlides(n) {
-            let slides = document.getElementsByClassName("slide");
-            if (n > slides.length) { slideIndex = 1; }
-            if (n < 1) { slideIndex = slides.length; }
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slides[slideIndex - 1].style.display = "block";
-        }
-
-        setInterval(() => plusSlides(1), 5000);
-    </script>
 {% endblock %}

@@ -1,0 +1,4 @@
+# local only
+_backup_*/
+__pycache__/
+*.pyc

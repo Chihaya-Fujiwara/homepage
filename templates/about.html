@@ -1,96 +1,111 @@
 {% extends "layout.html" %}
 
-{% block title %}ホーム{% endblock %}
+{% block title %}{{ 'プロフィール' if ja else 'Profile' }}{% endblock %}
 
 {% block content %}
-    <!-- 言語切り替え -->
-    <div class="lang-toggle">
-        <a href="{{ url_for('about', lang='ja') }}">🇯🇵 日本語</a> | 
-        <a href="{{ url_for('about', lang='en') }}">🇬🇧 English</a>
+
+<header class="page-head">
+    <p class="eyebrow">Profile</p>
+    <h1>{{ 'プロフィール' if ja else 'Profile' }}</h1>
+</header>
+
+<div class="with-toc">
+    <nav class="toc" aria-label="{{ '目次' if ja else 'Contents' }}">
+        <p>{{ '目次' if ja else 'Contents' }}</p>
+        <ul>
+            <li><a href="#profile">{{ '自己紹介' if ja else 'Overview' }}</a></li>
+            <li><a href="#career">{{ '経歴' if ja else 'Education & Employment' }}</a></li>
+            <li><a href="#societies">{{ '所属学会' if ja else 'Professional Memberships' }}</a></li>
+        </ul>
+    </nav>
+
+    <div>
+        <section class="section" id="profile">
+            <div class="profile no-photo">
+                <div>
+                    <h2>{{ '藤原 千隼' if ja else 'Chihaya Fujiwara' }}</h2>
+                    <p class="name-alt">{{ 'Chihaya Fujiwara' if ja else '藤原 千隼' }}</p>
+                    {% if ja %}
+                    <p class="role">日本学術振興会 特別研究員（DC1）</p>
+                    <p class="role muted">名古屋大学 大学院工学研究科 エネルギー理工学専攻<br>量子線写像工学研究グループ 黒澤研究室（X研）</p>
+                    <p>無機発光材料、特にハロゲン化物シンチレータの結晶育成と、その光学特性・放射線検出特性の評価に取り組んでいます。第一原理計算による電子状態解析と組み合わせ、発光機構の理解と中性子・ガンマ線検出への応用を目指しています。</p>
+                    {% else %}
+                    <p class="role">JSPS Research Fellow (DC1)</p>
+                    <p class="role muted">Kurosawa Laboratory (X-Lab), Department of Energy Engineering,<br>Graduate School of Engineering, Nagoya University</p>
+                    <p>My research focuses on the crystal growth of inorganic luminescent materials, particularly halide scintillators, and on the characterization of their optical and radiation-detection properties. By combining these experiments with electronic-structure analysis based on first-principles calculations, I aim to elucidate the underlying luminescence mechanisms and to apply these materials to neutron and gamma-ray detection.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="career">
+            <h2 class="section-title">{{ '経歴' if ja else 'Education & Employment' }}</h2>
+            <ul class="timeline">
+                <li class="current">
+                    <span class="period">2025.04 – {{ '現在' if ja else 'Present' }}</span>
+                    <div class="what">
+                        {% if ja %}<strong>日本学術振興会 特別研究員（DC1）</strong>
+                        {% else %}<strong>JSPS Research Fellow (DC1)</strong><span>Japan Society for the Promotion of Science</span>{% endif %}
+                    </div>
+                </li>
+                <li class="current">
+                    <span class="period">2025.04 – {{ '現在' if ja else 'Present' }}</span>
+                    <div class="what">
+                        {% if ja %}<strong>東北大学 大学院工学研究科 材料システム工学専攻 博士後期課程</strong>
+                        {% else %}<strong>Doctoral Program</strong><span>Department of Materials Processing, Graduate School of Engineering, Tohoku University</span>{% endif %}
+                    </div>
+                </li>
+                <li>
+                    <span class="period">2023.04 – 2025.03</span>
+                    <div class="what">
+                        {% if ja %}<strong>地方独立行政法人 東京都立産業技術研究センター 研究員</strong>
+                        {% else %}<strong>Researcher</strong><span>Tokyo Metropolitan Industrial Technology Research Institute (TIRI)</span>{% endif %}
+                    </div>
+                </li>
+                <li>
+                    <span class="period">2021.04 – 2023.03</span>
+                    <div class="what">
+                        {% if ja %}<strong>東北大学 大学院工学研究科 材料システム工学専攻 博士前期課程</strong>
+                        {% else %}<strong>Master's Program</strong><span>Department of Materials Processing, Graduate School of Engineering, Tohoku University</span>{% endif %}
+                    </div>
+                </li>
+                <li>
+                    <span class="period">2017.04 – 2021.03</span>
+                    <div class="what">
+                        {% if ja %}<strong>東北大学 工学部 材料科学総合学科</strong>
+                        {% else %}<strong>Bachelor's Program</strong><span>Department of Materials Science and Engineering, School of Engineering, Tohoku University</span>{% endif %}
+                    </div>
+                </li>
+                <li>
+                    <span class="period">2013.04 – 2016.03</span>
+                    <div class="what">
+                        {% if ja %}<strong>熊本県立 熊本高等学校</strong>
+                        {% else %}<strong>Kumamoto Prefectural Kumamoto High School</strong>{% endif %}
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <section class="section" id="societies">
+            <h2 class="section-title">{{ '所属学会' if ja else 'Professional Memberships' }}</h2>
+            <ul class="plain-list">
+                {% if ja %}
+                <li>公益社団法人 応用物理学会</li>
+                <li>公益社団法人 日本セラミックス協会</li>
+                <li>ヨウ素学会</li>
+                {% else %}
+                <li>The Japan Society of Applied Physics (JSAP)</li>
+                <li>The Ceramic Society of Japan (CerSJ)</li>
+                <li>The Society of Iodine Science (SIS)</li>
+                {% endif %}
+            </ul>
+        </section>
+
+        <div class="callout">
+            <p>{{ '研究テーマと実験設備の詳細はこちら。' if ja else 'Learn more about my research topics and experimental facilities.' }}</p>
+            <a class="btn primary" href="{{ url_for('research', lang=lang) }}">{{ '研究内容' if ja else 'Research' }} →</a>
+        </div>
     </div>
+</div>
 
-        
-    <div class="sidebar">
-            <li><a href="#name">{% if lang == 'ja' %}■自己紹介{% else %}■Name{% endif %}</a></li>
-            <li><a href="#soc">{% if lang == 'ja' %}■所属学会{% else %}■Affiliated academic society{% endif %}</a></li>
-            <li><a href="#carrer">{% if lang == 'ja' %}■経歴{% else %}■ Career{% endif %}</a></li>
-    </div>
-        
-    <br>
-
-    <section class="main_left" id="name">
-        <h1>{% if lang == 'ja' %}■自己紹介{% else %}■Name{% endif %}</h1>
-    </section>
-    <section class="main_black">
-        <h1>{% if lang == 'ja' %}・藤原千隼{% else %}・Fujiwara Chiaya{% endif %} </h1>
-    </section>
-
-    <section class="page-top">
-        <img src="{{ url_for('static', filename='fig/mypage.jpg') }}" 
-             alt="Top image" 
-             class="mypage__img">
-    </section>
-    
-    <br>
-
-    
-    <section class="main_left" id="soc">
-        <h1>{% if lang == 'ja' %}■所属学会{% else %}■Affiliated academic society{% endif %}</h1>
-    </section>
-    <section class="main_black">
-        <h1>{% if lang == 'ja' %}・応用物理学会{% else %}・The Japan Society of Applied Physics{% endif %} </h1>
-    </section>
-
-    <section class="main_black">
-        <h1>{% if lang == 'ja' %}・セラミックス協会{% else %}・The Society of Seramics{% endif %} </h1>
-    </section>
-    
-    <section class="main_black">
-        <h1>{% if lang == 'ja' %}・ヨウ素学会{% else %}・The Society of Iodine Science{% endif %} </h1>
-    </section>
-    <br>
-
-    <section class="main_left" id ="career">
-        <h1>{% if lang == 'ja' %}■経歴{% else %}■ Career{% endif %}</h1>
-    </section>
-    <section class="main_black">
-        <h1>{% if lang == 'ja' %}・2025/4 ~ 現在 &emsp;: &emsp; 独立行政法人 日本学術振興会 特別研究員 DC1 
-            {% else %}・2025/4 ~ Now &emsp;: &emsp; JSPS Research Fellowship for Young Scientists（DC1） {% endif %}</h1>
-        <h1>{% if lang == 'ja' %}・2025/4 ~ 現在 &emsp;: &emsp; 東北大学 工学研究科材料 システム工学専攻 博士後期課程 1年 
-            {% else %}・2025/4 ~ Now &emsp;: &emsp; Tohoku University, Faculty of Engineering, Department of Materials Processing, Doctoral course{% endif %}</h1>
-        <h1>{% if lang == 'ja' %}・2023/4 ~ 2025/3 &emsp;: &emsp; 地方独立行政法人 東京都立産業技術研究センター 研究員 
-            {% else %}・2023/4 ~ 2025/3 &emsp;: &emsp; Tokyo Metropolitan Industrial Technology Research Institute, Researcher{% endif %}</h1>
-        <h1>{% if lang == 'ja' %}・2021/4 ~ 2023/3 &emsp;: &emsp; 東北大学 工学研究科材料 システム工学専攻 修士課程
-            {% else %}・2021/4 ~ 2023/3&emsp;: &emsp;  Tohoku University, Faculty of Engineering, Department of Materials Processing, Master course{% endif %}</h1>
-        <h1>{% if lang == 'ja' %}・2017/4 ~ 2021/3 &emsp;: &emsp; 東北大学 工学部 材料科学総合学科
-            {% else %}・2017/4 ~ 2021/3 &emsp;: &emsp; Department of Materials Science and Engineering.{% endif %}</h1>
-        <h1>{% if lang == 'ja' %}・2013/4 ~ 2016/3 &emsp;: &emsp; 熊本県立 熊本高等学校
-            {% else %}・2013/4 ~ 2016/3 &emsp;: &emsp; Kumamoto Prefectural Kumamoto High School{% endif %}</h1>
-    </section>
-
-    <br>
-    
-        
-    <a href="{{ url_for('research', lang=lang) }}" class="cta-button">{% if lang == 'ja' %}研究内容を見る{% else %}Explore Research Projects{% endif %}</a>
-
-    <script>
-        let slideIndex = 1;
-        showSlides(slideIndex);
-
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
-
-        function showSlides(n) {
-            let slides = document.getElementsByClassName("slide");
-            if (n > slides.length) { slideIndex = 1; }
-            if (n < 1) { slideIndex = slides.length; }
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slides[slideIndex - 1].style.display = "block";
-        }
-
-        setInterval(() => plusSlides(1), 5000);
-    </script>
 {% endblock %}

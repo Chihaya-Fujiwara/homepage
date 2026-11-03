@@ -1,161 +1,192 @@
 {% extends "layout.html" %}
 
-{% block title %}研究業績{% endblock %}
+{% block title %}{{ '業績' if ja else 'Publications' }}{% endblock %}
 
 {% block content %}
-    <!-- 言語切り替え -->
-    <div class="lang-toggle">
-        <a href="{{ url_for('publications', lang='ja') }}">🇯🇵 日本語</a> | 
-        <a href="{{ url_for('publications', lang='en') }}">🇬🇧 English</a>
-    </div>
 
-    <div class="sidebar">
-            <li><a href="#grants">{% if lang == 'ja' %}■競争的資金{% else %}■Grants{% endif %}</a></li>
-            <li><a href="#awards">{% if lang == 'ja' %}■受賞{% else %}■Awards{% endif %}</a></li>
-            <li><a href="#papers">{% if lang == 'ja' %}■論文{% else %}■Peer-reviewed papers{% endif %}</a></li>
-            <li><a href="#intl-conferences">{% if lang == 'ja' %}■国際学会発表{% else %}■International Conferences{% endif %}</a></li>
-            <li><a href="#domestic-conferences">{% if lang == 'ja' %}■国内学会発表{% else %}■Domestic Conferences{% endif %}</a></li>
-    </div>
-    
-    
-    <br>
+{# ================================================================
+   受賞・競争的資金は下のリストを編集してください（新しい順）。
+   論文・発表は data_paper.csv / int_pre.csv / dom_pre.csv を編集します。
+   ================================================================ #}
 
-    <section class="main_left" id="grants">
-        <h1>{% if lang == 'ja' %}業績は次を参照してください。https://researchmap.jp/C_Fujiwara, https://www.researchgate.net/profile/Chihaya-Fujiwara{% else %}■Grants{% endif %}</h1>
-    </section>
+{# 受賞: (年月, 日本語, English, 発表題目(日), 発表題目(英), URL) #}
+{% set awards = [
+    ('2026.09', '次世代放射線シンポジウム2026 優秀発表賞',
+                'Excellent Presentation Award, Next-Generation Radiation Symposium 2026', '', '', ''),
+    ('2026.06', '学術変革領域研究（B）「STED技術による生物と無生物をつなぐメゾスケール現象の動的解明」第5回領域会議 優秀発表賞',
+                'Excellent Presentation Award, The 5th Area Meeting of the Grant-in-Aid for Transformative Research Areas (B) “Dynamic Elucidation of Mesoscale Phenomena Linking Living and Non-Living Matter Using STED Technology”', '', '', ''),
+    ('2026.04', 'The 15th Advanced Lasers and Photon Sources Conference (ALPS2026) Oral Presentation Award',
+                'Oral Presentation Award, The 15th Advanced Lasers and Photon Sources Conference (ALPS2026)', '', '', 'https://alps.opicon.jp/'),
+    ('2026.03', '第59回 応用物理学会講演奨励賞（第86回応用物理学会秋季学術講演会）',
+                'The 59th JSAP Young Scientist Presentation Award (The 86th JSAP Autumn Meeting)', '', '',
+                'https://www.jsap.or.jp/young-scientist-presentation-award/recipients59'),
+    ('2025.12', '日本セラミックス協会 第45回電子材料研究討論会 奨励賞',
+                'Encouragement Award, The 45th Electronic Materials Research Symposium, The Ceramic Society of Japan', '', '', ''),
+    ('2025.11', '2025 IEEE NSS MIC RTSD First Place, Student Paper Award (Oral Presentation)',
+                'First Place, Student Paper Award (Oral Presentation), 2025 IEEE NSS MIC RTSD', '', '', ''),
+    ('2025.09', 'International Conference on Excited States of Transition Elements (ESTE2025) 優秀ポスター賞（Best Poster Distinction）',
+                'Best Poster Distinction, International Conference on Excited States of Transition Elements (ESTE2025)', '', '', ''),
+    ('2025.07', '学術変革領域研究（B）「STED技術による生物と無生物をつなぐメゾスケール現象の動的解明」第3回領域会議 優秀発表賞',
+                'Excellent Presentation Award, The 3rd Area Meeting of the Grant-in-Aid for Transformative Research Areas (B) “Dynamic Elucidation of Mesoscale Phenomena Linking Living and Non-Living Matter Using STED Technology”', '', '', ''),
+    ('2022.09', '日本セラミックス協会 第35回秋季シンポジウム 特定セッション「クリスタルサイエンス―結晶育成技術の新展開と材料研究―」優秀発表賞',
+                'Excellent Presentation Award, Special Session “Crystal Science: New Developments in Crystal Growth Technology and Materials Research,” The 35th Fall Meeting of the Ceramic Society of Japan',
+                '新規Li2Hf(Br,I)6中性子シンチレータの結晶構造と発光特性',
+                'Crystal Structure and Luminescence Properties of Novel Li2Hf(Br,I)6 Neutron Scintillators', ''),
+    ('2022.08', '次世代放射線シンポジウム2022 優秀発表賞',
+                'Excellent Presentation Award, Next-Generation Radiation Symposium 2022',
+                '原発廃炉に向けたリモート・リアルタイム中性子・ガンマ線両モニタ用の赤色発光Li2Hf(I,Br)6シンチレータの特性',
+                'Properties of Red-Emitting Li2Hf(I,Br)6 Scintillators for Remote Real-Time Neutron/Gamma-Ray Monitoring toward Nuclear Decommissioning', ''),
+] %}
 
-    <section class="main_left" id="grants">
-        <h1>{% if lang == 'ja' %}■競争的資金{% else %}■Grants{% endif %}</h1>
-    </section>
-    
-    <section class="alltext">
-        <h2>2025/7~2028/3 (代表) 公益財団法人東電記念財団2025年度国際技術交流援助（会議渡航）</h2>
-        <h2>2025/4~2028/3 (代表) 日本学術振興会 特別研究員奨励費 DC1</h2>
-        <h2>2024/4~2025/3 (代表) 2024年度 ヨウ素学会研究助成</h2>
-        <h2>2024/4~2025/3 (代表) 第一稀元素化学工業株式会社 研究助成</h2>
-        <h2>2024/4~2025/3 (代表) 東北大学金属材料研究所 共同利用 若手萌芽研究</h2>
+{# 競争的資金: (期間, 制度(日), 制度(英), 課題名(日), 課題名(英)) #}
+{% set grants = [
+    ('2026', '公益財団法人 村田学術振興・教育財団 国際会議参加助成',
+             'Grant for International Conference Participation, Murata Science and Education Foundation', '', ''),
+    ('2025', '公益財団法人 東電記念財団 2025年度 国際技術交流援助（会議渡航）',
+             'FY2025 International Technical Exchange Grant (Conference Travel), TEPCO Memorial Foundation', '', ''),
+    ('2025.04 – 2028.03', '日本学術振興会 特別研究員奨励費（DC1）',
+             'Grant-in-Aid for JSPS Fellows (DC1), Japan Society for the Promotion of Science',
+             '構造制御による赤色・近赤外線発光する高輝度ハロゲン化物中性子シンチレータの創成',
+             'Development of High-Light-Yield Red/Near-Infrared-Emitting Halide Neutron Scintillators through Structural Control'),
+    ('2024.07 – 2025.02', '第一稀元素化学工業株式会社 研究助成',
+             'Research Grant, Daiichi Kigenso Kagaku Kogyo Co., Ltd.',
+             'Cs2ZrCl6ハロゲン化物蛍光体の組成制御による希土類フリー黄色-赤色蛍光体の開発',
+             'Development of Rare-Earth-Free Yellow-to-Red Phosphors through Compositional Control of Cs2ZrCl6 Halide Phosphors'),
+    ('2024.04 – 2025.03', 'ヨウ素学会 2024年度 研究助成',
+             'FY2024 Research Grant, The Society of Iodine Science',
+             '自己発光ヨウ化物の組成制御による高輝度赤色-近赤外発光中性子シンチレータ開発',
+             'Development of High-Light-Yield Red-to-Near-Infrared-Emitting Neutron Scintillators through Compositional Control of Self-Luminescent Iodides'),
+    ('2024.04 – 2025.03', '東北大学 金属材料研究所 共同利用研究（若手萌芽研究）',
+             'Joint Research Program (Exploratory Research for Young Researchers), Institute for Materials Research, Tohoku University',
+             '八面体錯体[MX6]2-構造制御による高輝度赤色発光中性子シンチレータの創成',
+             'Development of High-Light-Yield Red-Emitting Neutron Scintillators through Structural Control of [MX6]2− Octahedral Complexes'),
+] %}
+
+{% set kind_label = {
+    'Invited': ('招待講演', 'Invited'), 'Oral': ('口頭', 'Oral'), 'Poster': ('ポスター', 'Poster')
+} %}
+{% set journals = data_paper | selectattr('category', 'equalto', 'journal') | list %}
+{% set procs = data_paper | selectattr('category', 'equalto', 'proceedings') | list %}
+{% set others = data_paper | selectattr('category', 'equalto', 'invited') | list %}
+
+{% macro paper_list(rows) %}
+<ol class="entries">
+    {% for row in rows %}
+    <li>
+        <span class="no">[{{ loop.revindex }}]</span>
+        <span class="entry-title">{{ row.paper | rich }}</span>
+        <span class="entry-authors">{{ row.authors | authors }}</span>
+        <span class="entry-meta">
+            {% set d = row.doi | doi %}
+            {% if d %}<a href="https://doi.org/{{ d }}" target="_blank" rel="noopener">doi:{{ d }}</a>{% endif %}
+            {% if 'peer' in (row.reviewed or '') | lower %}<span class="badge ok">{{ '査読あり' if ja else 'Peer-reviewed' }}</span>{% endif %}
+            {% if row.category == 'invited' %}<span class="badge award">{{ '招待論文' if ja else 'Invited' }}</span>{% endif %}
+        </span>
+    </li>
+    {% endfor %}
+</ol>
+{% endmacro %}
+
+{% macro talk_list(rows) %}
+<ol class="entries">
+    {% for row in rows %}
+    <li>
+        <span class="no">[{{ loop.revindex }}]</span>
+        <span class="entry-title">{{ row.title | rich }}</span>
+        <span class="entry-authors">{{ row.authors | authors }}</span>
+        <span class="entry-meta">
+            {% if row.kind in kind_label %}<span class="badge {{ 'award' if row.kind == 'Invited' else '' }}">{{ kind_label[row.kind][0] if ja else kind_label[row.kind][1] }}</span>{% endif %}
+            {% if row.event_name %}<span>{{ row.event_name }}</span>{% endif %}
+            {% if row.date %}<span>{{ row.date | replace('/', '.') }}</span>{% endif %}
+        </span>
+    </li>
+    {% endfor %}
+</ol>
+{% endmacro %}
+
+<header class="page-head">
+    <p class="eyebrow">Publications</p>
+    <h1>{{ '研究業績' if ja else 'Publications & Achievements' }}</h1>
+    <p class="lead">
+        {% if ja %}
+        2026年10月時点。最新の情報は <a href="https://researchmap.jp/C_Fujiwara" target="_blank" rel="noopener">researchmap</a> および <a href="https://www.researchgate.net/profile/Chihaya-Fujiwara" target="_blank" rel="noopener">ResearchGate</a> もご参照ください。
+        {% else %}
+        As of October 2026. For the most up-to-date record, please also refer to <a href="https://researchmap.jp/C_Fujiwara" target="_blank" rel="noopener">researchmap</a> and <a href="https://www.researchgate.net/profile/Chihaya-Fujiwara" target="_blank" rel="noopener">ResearchGate</a>.
+        {% endif %}
+    </p>
+</header>
+
+<div class="with-toc">
+    <nav class="toc" aria-label="{{ '目次' if ja else 'Contents' }}">
+        <p>{{ '目次' if ja else 'Contents' }}</p>
+        <ul>
+            <li><a href="#papers">{{ '論文' if ja else 'Papers' }}</a></li>
+            <li class="toc-sub"><a href="#journal">{{ '査読付き原著論文' if ja else 'Peer-Reviewed Journal Papers' }}</a></li>
+            <li class="toc-sub"><a href="#proceedings">{{ '国際会議論文' if ja else 'Conference Papers' }}</a></li>
+            <li class="toc-sub"><a href="#other-papers">{{ 'その他論文' if ja else 'Other Papers' }}</a></li>
+            <li><a href="#awards">{{ '受賞' if ja else 'Awards' }}</a></li>
+            <li><a href="#grants">{{ '競争的資金' if ja else 'Grants & Fellowships' }}</a></li>
+            <li><a href="#intl-conferences">{{ '国際会議発表' if ja else 'International Presentations' }}</a></li>
+            <li><a href="#domestic-conferences">{{ '国内会議発表' if ja else 'Domestic Presentations' }}</a></li>
         </ul>
-    </section>
+    </nav>
 
-    <br>
+    <div>
+        <section class="section" id="papers">
+            <h2 class="section-title" id="journal">{{ '査読付き原著論文' if ja else 'Peer-Reviewed Journal Papers' }}</h2>
+            {{ paper_list(journals) }}
 
-    <section class="main_left" id="awards">
-        <h1>{% if lang == 'ja' %}■受賞{% else %}■Awards{% endif %}</h1>
-    </section>
+            <h3 class="subsection-title" id="proceedings">{{ '国際会議論文' if ja else 'Conference Papers' }}</h3>
+            {{ paper_list(procs) }}
 
-    <section class="alltext">
-        <h2>2025/11 <br>第86回応用物理学会秋季学術講演会 "講演奨励賞" (https://www.jsap.or.jp/young-scientist-presentation-award/recipients59) </h2>
-        <h2>2025/11 <br>2025 IEEE NSS MIC RTSD "First Place, Student Paper Award, Oral Presentation" </h2>
-        <h2>2025/9 <br>International Conference on Excited States of Transition Elements (ESTE2025) Best poster Distinction </h2>
-        <h2>2025/7 <br>科学研究費助成事業・学術変革領域研究（B）「STED 技術による生物と無生物をつなぐメゾスケール現象の動的解明」の第3回領域会議 "優秀発表賞" </h2>
-        <h2>2022/9 <br>日本セラミックス協会第35回秋季シンポジウム特定セッション クリスタルサイエンス-結晶育成技術の新展開と材料研究- "優秀発表賞", 新規Li2Hf(Br,I)6中性子シンチレータの結晶構造と発光特性, 公益社団法人日本セラミックス協会 </h2>
-        <h2>2022/8 <br>次世代放射線シンポジウム "優秀発表賞", 原発廃炉に向けたリモート・リアルタイム中性子・ガンマ線両モニタ用の赤色発光Li2Hf(I,Br)6シンチレータの特性, 公益社団法人 応用物理学会 放射線分科会 </h2>
-    </section>
+            <h3 class="subsection-title" id="other-papers">{{ 'その他論文' if ja else 'Other Papers' }}</h3>
+            {{ paper_list(others) }}
+        </section>
+
+        <section class="section" id="awards">
+            <h2 class="section-title">{{ '受賞' if ja else 'Awards' }}</h2>
+            <ul class="simple">
+                {% for date, a_ja, a_en, s_ja, s_en, url in awards %}
+                <li>
+                    <span class="when">{{ date }}</span>
+                    <div>
+                        {{ a_ja if ja else a_en }}
+                        {% if url %}<a href="{{ url }}" target="_blank" rel="noopener" aria-label="link">↗</a>{% endif %}
+                        {% if s_ja %}<span class="sub">{{ ('「' ~ s_ja ~ '」' if ja else '“' ~ s_en ~ '”') | rich }}</span>{% endif %}
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section class="section" id="grants">
+            <h2 class="section-title">{{ '競争的資金' if ja else 'Grants & Fellowships' }}</h2>
+            <ul class="simple">
+                {% for period, g_ja, g_en, t_ja, t_en in grants %}
+                <li>
+                    <span class="when">{{ period }}</span>
+                    <div>
+                        {{ g_ja if ja else g_en }} <span class="badge">{{ '代表' if ja else 'PI' }}</span>
+                        {% if t_ja %}<span class="sub">{{ ('「' ~ t_ja ~ '」' if ja else '“' ~ t_en ~ '”') | rich }}</span>{% endif %}
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+            <p class="note">{{ 'ほか10件' if ja else 'And 10 others.' }}</p>
+        </section>
 
 
-    <br>
+        <section class="section" id="intl-conferences">
+            <h2 class="section-title">{{ '国際会議発表' if ja else 'International Presentations' }}</h2>
+            {{ talk_list(int_pre) }}
+        </section>
 
-
-    <section class="main_left" id="papers">
-        <h1>{% if lang == 'ja' %}■論文{% else %}■Peer-reviewed papers{% endif %}</h1>
-    </section>
-
-    <section class="alltext">
-        {% for row in data_paper %}
-            <article>
-                <h2>{{ row.paper }}</h2>
-                <p><strong>Authors:</strong> 
-                    {{ row.authors | replace("Chihaya Fujiwara", '<span class="highlight-author"> Chihaya Fujiwara</span>') | 
-                    replace("千隼 藤原", '<span class="highlight-author"> 藤原 千隼</span>') |safe }}
-                    
-                </p>
-                {% if row.doi %}
-                    <p><strong>DOI:</strong> <a href="https://doi.org/{{ row.doi }}" target="_blank">{{ row.doi }}</a></p>
-                {% endif %}
-                <p><strong>Reviewed:</strong> {{ row.reviewed }}</p>
-            </article>
-            <hr>    
-        {% endfor %}
-    </section>
-
-    <br>
-
-    <section class="main_left" id="intl-conferences">
-        <h1>{% if lang == 'ja' %}■国際学会発表{% else %}■International Conferences{% endif %}</h1>
-    </section>
-
-    <section class="alltext">
-        {% for row in int_pre %}
-            <article>
-                <h2>{{ row.title }}</h2>
-                <p><strong>Authors:</strong> 
-                    {{ row.authors | 
-                    replace("Chihaya Fujiwara", '<span class="highlight-author"> Chihaya Fujiwara</span>') | 
-                    replace("千隼 藤原", '<span class="highlight-author"> 藤原 千隼</span>') |
-                    replace("Chihaya. Fujiwara", '<span class="highlight-author"> Chihaya. Fujiwara</span>') |
-                    safe }}
-                </p>
-                <p><strong>Conference:</strong> {{row.event_name}}</p>
-                <p><strong>Date:</strong> {{row.date}}</p>
-            </article>
-            <hr>    
-        {% endfor %}
-    </section>
-
-    <br>
-
-    <section class="main_left" id="domestic-conferences">
-        <h1>{% if lang == 'ja' %}■国内学会発表{% else %}■Domestic Conferences{% endif %}</h1>
-    </section>
-
-    <section class="alltext">
-        {% for row in dom_pre %}
-            <article>
-                <h2>{{ row.title }}</h2>
-                <p><strong>Authors:</strong> 
-                    {{ row.authors | 
-                    replace("Chihaya Fujiwara", '<span class="highlight-author"> Chihaya Fujiwara</span>') | 
-                    replace("藤原 千隼", '<span class="highlight-author">藤原 千隼</span>') |
-                    replace("藤原千隼", '<span class="highlight-author">藤原千隼</span>') |
-                    replace("Chihaya. Fujiwara", '<span class="highlight-author"> Chihaya. Fujiwara</span>') |
-                    safe }}                    
-                </p>
-                <p><strong>Conference:</strong> {{row.event_name}}</p>
-                <p><strong>Date:</strong> {{row.date}}</p>
-            </article>
-            <hr>    
-        {% endfor %}
-    </section>
-
-    <br>
-
-    <a href="{{ url_for('research', lang=lang) }}" class="cta-button">
-        {% if lang == 'ja' %}研究内容を見る{% else %}Explore Research Projects{% endif %}
-    </a>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            let slides = document.getElementsByClassName("slide");
-            if (slides.length > 0) {
-                let slideIndex = 1;
-                showSlides(slideIndex);
-
-                function plusSlides(n) {
-                    showSlides(slideIndex += n);
-                }
-
-                function showSlides(n) {
-                    if (n > slides.length) { slideIndex = 1; }
-                    if (n < 1) { slideIndex = slides.length; }
-                    for (let i = 0; i < slides.length; i++) {
-                        slides[i].style.display = "none";
-                    }
-                    slides[slideIndex - 1].style.display = "block";
-                }
-
-                setInterval(() => plusSlides(1), 5000);
-            }
-        });
-    </script>
+        <section class="section" id="domestic-conferences">
+            <h2 class="section-title">{{ '国内会議発表' if ja else 'Domestic Presentations' }}</h2>
+            {% if not ja %}<p class="note">Titles are given in the original language (Japanese).</p>{% endif %}
+            {{ talk_list(dom_pre) }}
+        </section>
+    </div>
+</div>
 
 {% endblock %}
